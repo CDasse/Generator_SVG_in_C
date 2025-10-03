@@ -1,3 +1,7 @@
+# Projet SVG
+*.svg
+bin/
+
 # Prerequisites
 *.d
 
