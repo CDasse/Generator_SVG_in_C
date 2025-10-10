@@ -1,6 +1,7 @@
 # Projet SVG
 *.svg
 bin/
+.vscode/
 
 # Prerequisites
 *.d
