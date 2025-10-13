@@ -6,7 +6,7 @@
 
 viewbox_t *create_viewbox() {
     printf ("Pour commencer, veuillez préciser la dimension de votre fenetre de visualisation\n"
-        " (la largeur puis la hauteur).\n\n");
+    " (la largeur puis la hauteur).\n\n");
 
     viewbox_t *viewbox = malloc(sizeof(viewbox_t));
     viewbox->coordo_min_x = 0;
@@ -16,7 +16,7 @@ viewbox_t *create_viewbox() {
     viewbox->height = ask_for_unsigned_int("hauteur: ", "Merci d'entrer un nombre entier.");
 
     printf("Votre fenetre de visualisation aura une largeur de %upx et une hauteur de %upx.\n\n", 
-        viewbox->width, viewbox->height);
+    viewbox->width, viewbox->height);
 
     return viewbox;
 }
@@ -72,7 +72,7 @@ void free_shape_in_table(shape_struct_t *shape) {
 
 ellipse_t *create_ellipse() {
     printf ("Veuillez préciser les informations concernant votre ellipse.\n"
-        "(coordo x du point central / coordo y du point central / rayon en x / rayon en y).\n\n");
+    "(coordo x du point central / coordo y du point central / rayon en x / rayon en y).\n\n");
 
     ellipse_t *ellipse = malloc(sizeof(ellipse_t));
 
@@ -82,8 +82,8 @@ ellipse_t *create_ellipse() {
     ellipse->rayon_y = ask_for_unsigned_int("rayon y: ", "Merci d'entrer un nombre entier.");
 
     printf("Votre ellipse aura un centre de coordonnées : x = %d / y = %d,"
-        " un rayon x = %dpx et un rayon y = %dpx.\n\n", 
-        ellipse->coordo_center_x, ellipse->coordo_center_y, ellipse->rayon_x, ellipse->rayon_y);
+    " un rayon x = %dpx et un rayon y = %dpx.\n\n", 
+    ellipse->coordo_center_x, ellipse->coordo_center_y, ellipse->rayon_x, ellipse->rayon_y);
 
     return ellipse;
 }
@@ -96,7 +96,7 @@ void free_ellipse(ellipse_t *ellipse) {
 
 rect_t *create_rect() {
     printf ("Veuillez préciser les informations concernant votre rectangle.\n"
-        " (coordo x du premier point / coordo y du premier point / largeur / hauteur).\n\n");
+    " (coordo x du premier point / coordo y du premier point / largeur / hauteur).\n\n");
     
     rect_t *rect = malloc(sizeof(rect_t));
 
@@ -106,8 +106,8 @@ rect_t *create_rect() {
     rect->height = ask_for_unsigned_int("hauteur: ", "Merci d'entrer un nombre entier.");
 
     printf("Votre rectangle aura son premier point aux coordonnées : x = %d / y = %d,"
-        " une largeur de %dpx et une hauteur de %dpx.\n\n", 
-        rect->coordo_start_x, rect->coordo_start_y, rect->width, rect->height);
+    " une largeur de %dpx et une hauteur de %dpx.\n\n", 
+    rect->coordo_start_x, rect->coordo_start_y, rect->width, rect->height);
     
     return rect;
 }
@@ -120,7 +120,7 @@ void free_rect(rect_t *rect) {
 
 line_t *create_line() {
     printf ("Veuillez préciser les informations concernant votre ligne.\n"
-        " (x du premier point / y du premier point / x du deuxieme point / y du deuxieme point).\n\n");
+    " (x du premier point / y du premier point / x du deuxieme point / y du deuxieme point).\n\n");
     
     line_t *line = malloc(sizeof(line_t));
 
@@ -130,10 +130,10 @@ line_t *create_line() {
     line->coordo_end_y = ask_for_unsigned_int("hauteur: ", "Merci d'entrer un nombre entier.");
 
     printf("Votre ligne aura son premier point aux coordonnées : x = %d / y = %d,"
-        " et son deuxieme point aux coordonnées : x = %d / y = %d.\n\n", 
-        line->coordo_start_x, line->coordo_start_y, line->coordo_end_x, line->coordo_end_y);
+    " et son deuxieme point aux coordonnées : x = %d / y = %d.\n\n", 
+    line->coordo_start_x, line->coordo_start_y, line->coordo_end_x, line->coordo_end_y);
     
-        return line;
+    return line;
 }
 
 

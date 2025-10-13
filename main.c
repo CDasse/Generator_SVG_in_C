@@ -9,59 +9,29 @@
 
 int main(void) {
     
-    printf("\nBienvenue dans ma super application de création de SVG !!\n\n");
+    printf("\nBienvenue dans cette super application de création de SVG !!\n\n");
 
     viewbox_t *svg_viewbox = create_viewbox();
     
     array_t *array_of_shapes = create_array();
     
-    menu_for_user(array_of_shapes);
-
-
-
-
-
-    char end_viewbox[] = "\n</svg>";
-
-    FILE *my_file = fopen("test.svg", "w");
-
-    if (fprintf(my_file, "<svg viewBox='0 0 %d %d' xmlns='http://www.w3.org/2000/svg'>\n",
-        svg_viewbox->width, svg_viewbox->height) &&
-    fprintf(my_file, "%s", end_viewbox) <0) {
-        printf("Something went wrong");
-    }
-    
-    fclose(my_file);
-    
+    menu_for_user(array_of_shapes, svg_viewbox);
 
     return 0;
 }
-
-// system("clear");
-
-
-// typedef struct style_s {
-//     // creer la structure pour les couleurs RGBA
-// } style_t;
-
-// style_t *create_style(){
-//     // initialiser toutes les valeurs de style
-// }
-
-// polyline et polygon est une suite de point !!!  --->  liste chainée
 
 
 
 // mettre le code sur plusieurs ligne pour qu'il ne soit pas trop long  (alt-z)
 
+// utiliser les fonction free malloc !!!!!!!!!!!!!!!!!
 
-// creer fonction pour tester valeurs entrer par l'utilisateur (uint)
-// boucler une structure à fond (avec menu creer (pas possible sinon liste) / modifier / imprimer)
-// appeler jerem à l'aide pour les listes
-// creer des listes pour juste un type / avoir des id fixes pour les nodes
-// ajouter au menu la possibilite de creer et supprimer
-// ajouter les autres struct
+// Faire readme !!!!!
 
+// faire javadoc !!!!
 
-// utiliser les fonction free malloc ??
-// ATTENTION si suppression de figure, penser mettre l'index à NULL
+// tableau a allocation dynamique
+
+// verifier les .h que toutes les fonctions soient bien presentes
+
+// faire des fonctions plus petites !!

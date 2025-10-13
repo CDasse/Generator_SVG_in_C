@@ -41,7 +41,9 @@ typedef struct line_s {
 typedef enum user_menu_choice_e {
     CHOICE_CREATION = 1,
     CHOICE_EDITION = 2,
-    CHOICE_VISUALISATION = 3
+    CHOICE_REMOVE = 3,
+    CHOICE_SAVE = 4,
+    CHOICE_EXIT = 5
 } user_menu_choice_t;
 
 

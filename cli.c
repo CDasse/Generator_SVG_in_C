@@ -62,3 +62,45 @@ int ask_for_int_in_range_1_to_3(char *message, char *error_message) {
    
     return temp;
 }
+
+
+int ask_for_int_in_range_1_to_5(char *message, char *error_message) {
+    int temp = 0;
+    bool is_user_input_valid = false;
+
+    while (! is_user_input_valid) {
+        
+        fprintf(stdout, "%s", message);
+
+        if ((scanf ("%d", &temp) > 0) && (temp > 0) && (temp < 6)) {
+            printf("\n");
+            is_user_input_valid = true;
+        } else {
+            fprintf(stdout, "%s\n", error_message);
+        }
+        clear_buffer();
+    }
+   
+    return temp;
+}
+
+
+int ask_for_int_in_table(char *message, char *error_message, array_t array[]) {
+    int temp = 0;
+    bool is_user_input_valid = false;
+
+    while (! is_user_input_valid) {
+        
+        fprintf(stdout, "%s", message);
+
+        if ((scanf ("%d", &temp) > 0) && (temp >= 0) && (temp < array->index)) {
+            printf("\n");
+            is_user_input_valid = true;
+        } else {
+            fprintf(stdout, "%s\n", error_message);
+        }
+        clear_buffer();
+    }
+   
+    return temp;
+}
