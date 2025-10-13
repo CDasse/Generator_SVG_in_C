@@ -1,10 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
 #include "shapes.h"
 #include "cli.h"
 #include "functions.h"
-
 
 
 int main(void) {
@@ -17,6 +15,8 @@ int main(void) {
     
     menu_for_user(array_of_shapes, svg_viewbox);
 
+    free_all(array_of_shapes, svg_viewbox);
+
     return 0;
 }
 
@@ -24,13 +24,9 @@ int main(void) {
 
 // mettre le code sur plusieurs ligne pour qu'il ne soit pas trop long  (alt-z)
 
-// utiliser les fonction free malloc !!!!!!!!!!!!!!!!!
-
 // Faire readme !!!!!
 
 // faire javadoc !!!!
-
-// tableau a allocation dynamique
 
 // verifier les .h que toutes les fonctions soient bien presentes
 

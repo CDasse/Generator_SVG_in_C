@@ -21,7 +21,6 @@ int ask_for_int(char *message, char *error_message) {
     bool is_user_input_valid = false;
 
     while (! is_user_input_valid) {
-        
         fprintf(stdout, "%s", message);
 
         if (scanf ("%d", &temp) > 0) {
@@ -29,11 +28,13 @@ int ask_for_int(char *message, char *error_message) {
         } else {
             fprintf(stdout, "%s\n", error_message);
         }
+
         clear_buffer();
     }
-   
+
     return temp;
 }
+
 
 unsigned int ask_for_unsigned_int(char *message, char *error_message) {
     int value = -1;
@@ -43,12 +44,12 @@ unsigned int ask_for_unsigned_int(char *message, char *error_message) {
     return (unsigned int) value;
 }
 
+
 int ask_for_int_in_range_1_to_3(char *message, char *error_message) {
     int temp = 0;
     bool is_user_input_valid = false;
 
     while (! is_user_input_valid) {
-        
         fprintf(stdout, "%s", message);
 
         if ((scanf ("%d", &temp) > 0) && (temp > 0) && (temp < 4)) {
@@ -57,6 +58,7 @@ int ask_for_int_in_range_1_to_3(char *message, char *error_message) {
         } else {
             fprintf(stdout, "%s\n", error_message);
         }
+
         clear_buffer();
     }
    
@@ -68,8 +70,7 @@ int ask_for_int_in_range_1_to_5(char *message, char *error_message) {
     int temp = 0;
     bool is_user_input_valid = false;
 
-    while (! is_user_input_valid) {
-        
+    while (! is_user_input_valid) { 
         fprintf(stdout, "%s", message);
 
         if ((scanf ("%d", &temp) > 0) && (temp > 0) && (temp < 6)) {
@@ -78,6 +79,7 @@ int ask_for_int_in_range_1_to_5(char *message, char *error_message) {
         } else {
             fprintf(stdout, "%s\n", error_message);
         }
+
         clear_buffer();
     }
    
@@ -85,7 +87,7 @@ int ask_for_int_in_range_1_to_5(char *message, char *error_message) {
 }
 
 
-int ask_for_int_in_table(char *message, char *error_message, array_t array[]) {
+int ask_for_int_in_table(char *message, char *error_message, array_t *array) {
     int temp = 0;
     bool is_user_input_valid = false;
 
@@ -99,6 +101,7 @@ int ask_for_int_in_table(char *message, char *error_message, array_t array[]) {
         } else {
             fprintf(stdout, "%s\n", error_message);
         }
+        
         clear_buffer();
     }
    

@@ -5,13 +5,13 @@
 
 
 viewbox_t *create_viewbox() {
-    printf ("Pour commencer, veuillez préciser la dimension de votre fenetre de visualisation\n"
-    " (la largeur puis la hauteur).\n\n");
+    printf("Pour commencer, veuillez préciser la dimension de votre fenetre de visualisation\n"
+    "(la largeur puis la hauteur).\n\n");
 
     viewbox_t *viewbox = malloc(sizeof(viewbox_t));
+
     viewbox->coordo_min_x = 0;
     viewbox->coordo_min_y = 0;
-
     viewbox->width = ask_for_unsigned_int("largeur: ", "Merci d'entrer un nombre entier.");
     viewbox->height = ask_for_unsigned_int("hauteur: ", "Merci d'entrer un nombre entier.");
 
@@ -28,26 +28,19 @@ void free_viewbox(viewbox_t *viewbox) {
 
 
 array_t *create_array() {
-    int array_size = ask_for_unsigned_int("Combien de formes souhaitez-vous réaliser? \n", "Merci d'entrer un nombre entier.");
-    array_t *array = malloc(sizeof(array_t) * array_size);
+    array_t *array = malloc(sizeof(array_t));
     array->index = 0;
 
-    for (int i = 0; i < array_size; i++) {
-        array->table[i] = NULL;
-    }
+    initialize_array(array);
     
     return array;
 }
 
 
-void free_array(array_t *array) {
-    for (int i = 0; i < 50; i++) {
-        if (array->table[i] != NULL) {
-            free_shape_in_table(array->table[i]);
-        }
+void initialize_array(array_t *array) {
+    for (int i = 0; i < 40; i++) {
+        array->table[i] = NULL;
     }
-    
-    free(array);
 }
 
 
@@ -76,8 +69,10 @@ ellipse_t *create_ellipse() {
 
     ellipse_t *ellipse = malloc(sizeof(ellipse_t));
 
-    ellipse->coordo_center_x = ask_for_unsigned_int("coordo centre x: ", "Merci d'entrer un nombre entier.");
-    ellipse->coordo_center_y = ask_for_unsigned_int("coordo centre y: ", "Merci d'entrer un nombre entier.");
+    ellipse->coordo_center_x = ask_for_unsigned_int("coordo centre x: ",
+    "Merci d'entrer un nombre entier.");
+    ellipse->coordo_center_y = ask_for_unsigned_int("coordo centre y: ",
+    "Merci d'entrer un nombre entier.");
     ellipse->rayon_x = ask_for_unsigned_int("rayon x: ", "Merci d'entrer un nombre entier.");
     ellipse->rayon_y = ask_for_unsigned_int("rayon y: ", "Merci d'entrer un nombre entier.");
 

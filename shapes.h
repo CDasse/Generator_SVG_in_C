@@ -1,5 +1,6 @@
-#ifndef DEF_MODELS
-#define DEF_MODELS
+#ifndef DEF_SHAPES
+#define DEF_SHAPES
+
 
 typedef struct node_stack_s node_stack_t;
 
@@ -17,7 +18,6 @@ typedef struct ellipse_s {
     int coordo_center_y;
     int rayon_x;
     int rayon_y;
-    // style_t *style;
 } ellipse_t;
 
 
@@ -26,7 +26,6 @@ typedef struct rect_s {
     int coordo_start_y;
     int width;
     int height;
-    // style_t *style;
 } rect_t;
 
 
@@ -75,7 +74,7 @@ typedef struct shape_struct_s {
 
 
 typedef struct array_s {
-    shape_struct_t* table[25];
+    shape_struct_t* table[40];
     int index;
 } array_t;
 
@@ -83,6 +82,13 @@ typedef struct array_s {
 viewbox_t *create_viewbox();
 
 void free_viewbox(viewbox_t *viewbox);
+
+
+array_t *create_array();
+
+void initialize_array(array_t *array);
+
+void free_shape_in_table(shape_struct_t *shape);
 
 
 ellipse_t *create_ellipse();
@@ -99,10 +105,5 @@ line_t *create_line();
 
 void free_line(line_t *line);
 
-void free_shape_in_table(shape_struct_t *shape);
-
-array_t *create_array();
-
-void free_array(array_t *array);
 
 #endif

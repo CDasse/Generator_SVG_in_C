@@ -12,6 +12,6 @@ int ask_for_int_in_range_1_to_3(char *message, char *error_message);
 
 int ask_for_int_in_range_1_to_5(char *message, char *error_message);
 
-int ask_for_int_in_table(char *message, char *error_message, array_t array[]);
+int ask_for_int_in_table(char *message, char *error_message, array_t *array);
 
 #endif
