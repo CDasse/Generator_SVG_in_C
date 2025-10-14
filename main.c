@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "shapes.h"
-#include "cli.h"
-#include "functions.h"
+#include "menu.h"
+
 
 
 int main(void) {
@@ -22,12 +22,8 @@ int main(void) {
 
 
 
-// mettre le code sur plusieurs ligne pour qu'il ne soit pas trop long  (alt-z)
-
 // Faire readme !!!!!
 
 // faire javadoc !!!!
 
 // verifier les .h que toutes les fonctions soient bien presentes
-
-// faire des fonctions plus petites !!

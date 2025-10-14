@@ -106,4 +106,7 @@ line_t *create_line();
 void free_line(line_t *line);
 
 
+void free_all(array_t *array, viewbox_t *viewbox);
+
+
 #endif

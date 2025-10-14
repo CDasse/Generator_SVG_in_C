@@ -135,3 +135,14 @@ line_t *create_line() {
 void free_line(line_t *line) {
     free(line);
 }
+
+
+void free_all(array_t *array, viewbox_t *viewbox) {
+    for (int i = 0; i < 40; i++) {
+        if (array->table[i] != NULL) {
+            free_shape_in_table(array->table[i]);
+        }
+    }
+    free(array);
+    free_viewbox(viewbox);
+}
