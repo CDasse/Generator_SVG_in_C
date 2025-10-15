@@ -15,6 +15,9 @@ void rect_for_creation(array_t *array);
 void line_for_creation(array_t *array);
 
 
+void polyline_for_creation(array_t *array);
+
+
 void free_struct(shape_struct_t *struc);
 
 

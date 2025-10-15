@@ -15,6 +15,9 @@ char *get_shape_type(shape_type_enum_t type) {
         case SHAPE_LINE:
             return "LIGNE";
         break;
+        case SHAPE_POLYLINE:
+            return "POLYLIGNE";
+        break;
         default:
             return "Forme inconnue";
         break;
@@ -38,6 +41,9 @@ void show_shapes_in_table(array_t *array) {
             break;
             case SHAPE_LINE:
                 show_line_in_table (i, array->table[i]);
+            break;
+            case SHAPE_POLYLINE:
+                show_polyline_in_table (i, array->table[i]);
             break;
             default:
                 printf("[%d] Forme supprimée.\n", i);
@@ -77,4 +83,18 @@ void show_line_in_table(int i, shape_struct_t *shape) {
     shape->union_shape.line->coordo_start_y,
     shape->union_shape.line->coordo_end_x,
     shape->union_shape.line->coordo_end_y);
+}
+
+
+void show_polyline_in_table(int i, shape_struct_t *shape) {
+    printf("[%d] %s / points :", i, get_shape_type(shape->enum_shape));
+
+    liste_t *polyline = shape->union_shape.polyline;
+    list_element_t *element = polyline->start;
+
+    while (element != NULL) {
+        printf(" (%d/%d) ", element->value1, element->value2);
+        element = element->next;
+    }
+    printf("\n");
 }

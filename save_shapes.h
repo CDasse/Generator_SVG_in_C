@@ -15,4 +15,7 @@ void save_rectangle(shape_struct_t *shape, FILE *file);
 void save_line(shape_struct_t *shape, FILE *file);
 
 
+void save_polyline(shape_struct_t *shape, FILE *file);
+
+
 #endif

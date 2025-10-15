@@ -25,3 +25,8 @@ build:
 
 clean:
 	rm bin/*
+
+
+valgrind:
+
+	valgrind --leak-check=full --show-reachable=no ./bin/main

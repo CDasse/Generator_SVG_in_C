@@ -48,13 +48,16 @@ void free_shape_in_table(shape_struct_t *shape) {
     switch (shape->enum_shape) {
     case SHAPE_ELLIPSE:
         free_ellipse(shape->union_shape.ellipse);
-        break;
+    break;
     case SHAPE_RECTANGLE:
         free_rect(shape->union_shape.rectangle);
-        break;
+    break;
     case SHAPE_LINE:
         free_line(shape->union_shape.line);
-        break;
+    break;
+    case SHAPE_POLYLINE:
+        free_elements_in_liste(shape->union_shape.polyline);
+    break;
     default :
         printf("Une erreur est survenue");
         break;
@@ -65,7 +68,7 @@ void free_shape_in_table(shape_struct_t *shape) {
 
 ellipse_t *create_ellipse() {
     printf ("Veuillez préciser les informations concernant votre ellipse.\n"
-    "(coordo x du point central / coordo y du point central / rayon en x / rayon en y).\n\n");
+    "(coordo x du point central / coordo y du point central / rayon en x / rayon en y)\n\n");
 
     ellipse_t *ellipse = malloc(sizeof(ellipse_t));
 
@@ -91,7 +94,7 @@ void free_ellipse(ellipse_t *ellipse) {
 
 rect_t *create_rect() {
     printf ("Veuillez préciser les informations concernant votre rectangle.\n"
-    " (coordo x du premier point / coordo y du premier point / largeur / hauteur).\n\n");
+    " (coordo x du premier point / coordo y du premier point / largeur / hauteur)\n\n");
     
     rect_t *rect = malloc(sizeof(rect_t));
 
@@ -115,7 +118,7 @@ void free_rect(rect_t *rect) {
 
 line_t *create_line() {
     printf ("Veuillez préciser les informations concernant votre ligne.\n"
-    " (x du premier point / y du premier point / x du deuxieme point / y du deuxieme point).\n\n");
+    " (x du premier point / y du premier point / x du deuxieme point / y du deuxieme point)\n\n");
     
     line_t *line = malloc(sizeof(line_t));
 
@@ -145,4 +148,78 @@ void free_all(array_t *array, viewbox_t *viewbox) {
     }
     free(array);
     free_viewbox(viewbox);
+}
+
+
+liste_t *create_polyline() {
+    printf ("Veuillez préciser les informations concernant votre polyline.\n"
+    "(coordos x des points / coordos y des points)\n\n");
+
+    liste_t *liste = malloc(sizeof(liste_t));
+    liste->lenght = 0;
+    liste->start = NULL;
+
+    int choice_user = 1;
+
+    do {
+        list_element_t *liste_element = malloc(sizeof(list_element_t));
+
+        push_in_list(
+            liste, 
+            liste_element,
+            ask_for_unsigned_int("coordo x: ", "Merci d'entrer un nombre entier."),
+            ask_for_unsigned_int("coordo y: ", "Merci d'entrer un nombre entier."));
+
+        choice_user = ask_for_int_in_range_1_to_2(
+            "Voulez-vous ajouter un point à votre polyline ? (1: oui / 2: non)\n",
+            "Merci d'entrer 1 ou 2.");
+    } while (choice_user == 1);
+
+    printf("Votre polyline aura %d points.\n\n", liste->lenght);
+
+    return liste;
+}
+
+
+void push_in_list(liste_t *list, list_element_t *element, int x, int y) {
+    element->value1 = x;
+    element->value2 = y;
+    element->next = NULL;
+    list->lenght++;
+
+    list_element_t *cursor = list->start;
+    if (cursor == NULL) {
+        list->start = element;
+        return;
+    }
+
+    while (cursor->next != NULL) {
+        cursor = cursor->next;
+    }
+
+    cursor->next = element;
+}
+
+
+void free_liste(liste_t *liste) {
+    free(liste);
+}
+
+
+void free_element(list_element_t *element) {
+    free(element);
+}
+
+
+void free_elements_in_liste(liste_t *liste) {
+    list_element_t *element = liste->start;
+    list_element_t *temp = NULL;
+
+    while (element != NULL) {
+        temp = element->next;
+        free(element);
+        element = temp;
+    }
+
+    free_liste(liste);
 }

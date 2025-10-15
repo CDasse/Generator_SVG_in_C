@@ -7,8 +7,8 @@
 
 
 void choice_shape_for_creation(array_t *array, viewbox_t *viewbox) {
-    user_shape_choice_t choice_shape = ask_for_int_in_range_1_to_3("Quelle forme voulez-vous realiser ?\n"
-    "(1: ellipse / 2: rectangle / 3: ligne)\n", "Merci d'entrer un nombre entre 1 et 3.");
+    user_shape_choice_t choice_shape = ask_for_int_in_range_1_to_4("Quelle forme voulez-vous realiser ?\n"
+    "(1: ellipse / 2: rectangle / 3: ligne / 4: polyline)\n", "Merci d'entrer un nombre entre 1 et 4.");
 
     switch (choice_shape) {
         case CHOICE_ELLIPSE:
@@ -19,6 +19,9 @@ void choice_shape_for_creation(array_t *array, viewbox_t *viewbox) {
         break;
         case CHOICE_LINE:
             line_for_creation(array);
+        break;
+        case CHOICE_POLYLINE:
+            polyline_for_creation(array);
         break;
         default:
             printf("Une erreur est survenue");
@@ -56,6 +59,17 @@ void line_for_creation(array_t *array) {
     shape_struct_t *my_struc = malloc(sizeof(shape_struct_t));
     my_struc->union_shape.line = line;
     my_struc->enum_shape = SHAPE_LINE;
+
+    array->table[array->index] = my_struc;
+    array->index++;
+}
+
+
+void polyline_for_creation(array_t *array) {
+    liste_t *polyline = create_polyline();
+    shape_struct_t *my_struc = malloc(sizeof(shape_struct_t));
+    my_struc->union_shape.polyline = polyline;
+    my_struc->enum_shape = SHAPE_POLYLINE;
 
     array->table[array->index] = my_struc;
     array->index++;

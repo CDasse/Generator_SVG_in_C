@@ -4,7 +4,6 @@
 #include "menu.h"
 
 
-
 int main(void) {
     
     printf("\nBienvenue dans cette super application de création de SVG !!\n\n");
@@ -21,9 +20,12 @@ int main(void) {
 }
 
 
+// suppression point particulier dans polyline
+
+// ajouter fonctionnalite couleur ??
+
+// tester le code a fond !!!!!
 
 // Faire readme !!!!!
 
 // faire javadoc !!!!
-
-// verifier les .h que toutes les fonctions soient bien presentes

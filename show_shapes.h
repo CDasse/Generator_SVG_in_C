@@ -18,4 +18,7 @@ void show_rectangle_in_table(int i, shape_struct_t *shape);
 void show_line_in_table(int i, shape_struct_t *shape);
 
 
+void show_polyline_in_table(int i, shape_struct_t *shape);
+
+
 #endif

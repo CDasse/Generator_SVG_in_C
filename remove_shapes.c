@@ -9,11 +9,17 @@
 
 void choice_shape_for_remove(array_t *array, viewbox_t *viewbox) {
     if (array->index == 0) {
-        printf("Aucune forme n'est creee.\n");
+        printf("Aucune forme n'est creee! \n\n");
     } else {
         show_shapes_in_table(array);
         int choice_user_remove = ask_for_int_in_table("\nQuelle forme voulez-vous supprimer"
         "(indiquer son index) ?\n", "Merci d'entrer un index valide.", array);
+
+        if (array->table[choice_user_remove] == NULL) {
+            printf("Cette forme a deja ete supprimee.\n");
+            menu_for_user(array, viewbox);
+            return;
+        }
 
         free_shape_in_table(array->table[choice_user_remove]);
 

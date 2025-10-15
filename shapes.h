@@ -1,8 +1,12 @@
 #ifndef DEF_SHAPES
 #define DEF_SHAPES
-
+#include <stdbool.h>
 
 typedef struct node_stack_s node_stack_t;
+
+typedef struct list_element_s list_element_t;
+
+typedef struct liste_s liste_t;
 
 
 typedef struct viewbox_s {
@@ -49,7 +53,8 @@ typedef enum user_menu_choice_e {
 typedef enum user_shape_choice_e {
     CHOICE_ELLIPSE = 1,
     CHOICE_RECTANGLE = 2,
-    CHOICE_LINE = 3
+    CHOICE_LINE = 3,
+    CHOICE_POLYLINE = 4
 } user_shape_choice_t;
 
 
@@ -57,13 +62,15 @@ typedef union shape_type_u {
     ellipse_t *ellipse;
     rect_t *rectangle;
     line_t *line;
+    liste_t *polyline;
 } shape_type_t;
 
 
 typedef enum shape_type_enum_e {
     SHAPE_ELLIPSE,
     SHAPE_RECTANGLE,
-    SHAPE_LINE
+    SHAPE_LINE,
+    SHAPE_POLYLINE
 } shape_type_enum_t;
 
 
@@ -77,6 +84,19 @@ typedef struct array_s {
     shape_struct_t* table[40];
     int index;
 } array_t;
+
+
+typedef struct list_element_s {
+   int value1;
+   int value2;
+   list_element_t *next;
+} list_element_t;
+
+
+typedef struct liste_s {
+    int lenght;
+    list_element_t *start;
+} liste_t;
 
 
 viewbox_t *create_viewbox();
@@ -108,5 +128,15 @@ void free_line(line_t *line);
 
 void free_all(array_t *array, viewbox_t *viewbox);
 
+
+liste_t *create_polyline();
+
+void push_in_list(liste_t *list, list_element_t *liste_element, int x, int y);
+
+void free_liste(liste_t *liste);
+
+void free_element(list_element_t *element);
+
+void free_elements_in_liste(liste_t *liste);
 
 #endif
