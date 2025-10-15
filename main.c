@@ -20,8 +20,6 @@ int main(void) {
 }
 
 
-// suppression point particulier dans polyline
-
 // ajouter fonctionnalite couleur ??
 
 // tester le code a fond !!!!!

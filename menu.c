@@ -10,9 +10,12 @@
 
 
 void menu_for_user(array_t *array, viewbox_t *viewbox) {
-    user_menu_choice_t choice_menu = ask_for_int_in_range_1_to_5("Que voulez-vous faire ?\n"
-    "(1: creation / 2: edition / 3: suppression / 4: sauvegarde / 5: quitter)\n",
-    "Merci d'entrer un nombre entre 1 et 5.");
+    user_menu_choice_t choice_menu = ask_for_int_in_range("Que voulez-vous faire ?\n"
+        "(1: creation / 2: edition / 3: suppression / 4: sauvegarde / 5: quitter)\n",
+        "Merci d'entrer un nombre entre 1 et 5.",
+        1,
+        5
+    );
     
     switch (choice_menu) {
         case CHOICE_CREATION:

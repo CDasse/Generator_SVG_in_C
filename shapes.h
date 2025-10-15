@@ -94,7 +94,7 @@ typedef struct list_element_s {
 
 
 typedef struct liste_s {
-    int lenght;
+    int length;
     list_element_t *start;
 } liste_t;
 
@@ -138,5 +138,6 @@ void free_liste(liste_t *liste);
 void free_element(list_element_t *element);
 
 void free_elements_in_liste(liste_t *liste);
+
 
 #endif

@@ -11,7 +11,7 @@ void save_projet(array_t *array, viewbox_t *viewbox) {
     FILE *saved_file = fopen("projet.svg", "w");
 
     fprintf(saved_file, "<svg viewBox='0 0 %d %d' xmlns='http://www.w3.org/2000/svg'>\n",
-    viewbox->width, viewbox->height);
+        viewbox->width, viewbox->height);
     
     for (int i = 0; i < array->index; i++) {
 
@@ -50,28 +50,31 @@ void save_projet(array_t *array, viewbox_t *viewbox) {
 
 void save_ellipse(shape_struct_t *shape, FILE *file) {
     fprintf(file,"<ellipse cx='%d' cy='%d' rx='%d' ry='%d' fill='#ff000080' />",
-    shape->union_shape.ellipse->coordo_center_x,
-    shape->union_shape.ellipse->coordo_center_y,
-    shape->union_shape.ellipse->rayon_x,
-    shape->union_shape.ellipse->rayon_y);
+        shape->union_shape.ellipse->coordo_center_x,
+        shape->union_shape.ellipse->coordo_center_y,
+        shape->union_shape.ellipse->rayon_x,
+        shape->union_shape.ellipse->rayon_y
+    );
 }
 
 
 void save_rectangle(shape_struct_t *shape, FILE *file) {
     fprintf(file,"<rect x='%d' y='%d' width='%d' height='%d' fill='#00ff0080' />",
-    shape->union_shape.rectangle->coordo_start_x,
-    shape->union_shape.ellipse->coordo_center_y,
-    shape->union_shape.rectangle->width,
-    shape->union_shape.rectangle->height);
+        shape->union_shape.rectangle->coordo_start_x,
+        shape->union_shape.rectangle->coordo_start_y,
+        shape->union_shape.rectangle->width,
+        shape->union_shape.rectangle->height
+    );
 }
 
 
 void save_line(shape_struct_t *shape, FILE *file) {
     fprintf(file,"<line x1='%d' y1='%d' x2='%d' y2='%d' stroke='#0000ff80' />",
-    shape->union_shape.line->coordo_start_x,
-    shape->union_shape.line->coordo_start_y,
-    shape->union_shape.line->coordo_end_x,
-    shape->union_shape.line->coordo_end_y);
+        shape->union_shape.line->coordo_start_x,
+        shape->union_shape.line->coordo_start_y,
+        shape->union_shape.line->coordo_end_x,
+        shape->union_shape.line->coordo_end_y
+    );
 }
 
 

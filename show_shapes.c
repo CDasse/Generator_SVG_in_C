@@ -55,34 +55,37 @@ void show_shapes_in_table(array_t *array) {
 
 void show_ellipse_in_table(int i, shape_struct_t *shape) {
     printf("[%d] %s / coordo centre: %d/%d, rayons: %dpx/%dpx\n",
-    i,
-    get_shape_type(shape->enum_shape),
-    shape->union_shape.ellipse->coordo_center_x,
-    shape->union_shape.ellipse->coordo_center_y,
-    shape->union_shape.ellipse->rayon_x,
-    shape->union_shape.ellipse->rayon_y);
+        i,
+        get_shape_type(shape->enum_shape),
+        shape->union_shape.ellipse->coordo_center_x,
+        shape->union_shape.ellipse->coordo_center_y,
+        shape->union_shape.ellipse->rayon_x,
+        shape->union_shape.ellipse->rayon_y
+    );
 }
 
 
 void show_rectangle_in_table(int i, shape_struct_t *shape) {
     printf("[%d] %s / coordo premier point: %d/%d, largeur: %dpx, hauteur: %dpx\n",
-    i,
-    get_shape_type(shape->enum_shape),
-    shape->union_shape.rectangle->coordo_start_x,
-    shape->union_shape.rectangle->coordo_start_y,
-    shape->union_shape.rectangle->width,
-    shape->union_shape.rectangle->height);
+        i,
+        get_shape_type(shape->enum_shape),
+        shape->union_shape.rectangle->coordo_start_x,
+        shape->union_shape.rectangle->coordo_start_y,
+        shape->union_shape.rectangle->width,
+        shape->union_shape.rectangle->height
+    );
 }
 
 
 void show_line_in_table(int i, shape_struct_t *shape) {
     printf("[%d] %s / coordo premier point: %d/%d, coordo deuxieme point: %d/%d\n",
-    i,
-    get_shape_type(shape->enum_shape),
-    shape->union_shape.line->coordo_start_x,
-    shape->union_shape.line->coordo_start_y,
-    shape->union_shape.line->coordo_end_x,
-    shape->union_shape.line->coordo_end_y);
+        i,
+        get_shape_type(shape->enum_shape),
+        shape->union_shape.line->coordo_start_x,
+        shape->union_shape.line->coordo_start_y,
+        shape->union_shape.line->coordo_end_x,
+        shape->union_shape.line->coordo_end_y
+    );
 }
 
 
