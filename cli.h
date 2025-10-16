@@ -13,6 +13,9 @@ int ask_for_int(char *message, char *error_message);
 unsigned int ask_for_unsigned_int(char *message, char *error_message);
 
 
+int ask_for_1(char *message, char *error_message);
+
+
 int ask_for_int_in_range(char *message, char *error_message, int min, int max);
 
 

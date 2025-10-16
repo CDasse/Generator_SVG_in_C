@@ -51,6 +51,7 @@ typedef struct ellipse_s {
     int rayon_x;
     int rayon_y;
     color_t color;
+    int angle;
 } ellipse_t;
 
 
@@ -60,6 +61,7 @@ typedef struct rect_s {
     int width;
     int height;
     color_t color;
+    int angle;
 } rect_t;
 
 
@@ -69,6 +71,7 @@ typedef struct line_s {
     int coordo_end_x;
     int coordo_end_y;
     color_t color;
+    int angle;
 } line_t;
 
 
@@ -130,6 +133,7 @@ typedef struct list_element_s {
 typedef struct liste_s {
     int length;
     color_t color;
+    int angle;
     list_element_t *start;
 } liste_t;
 

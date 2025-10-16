@@ -8,7 +8,7 @@ int main(void) {
 
     system("clear");
     
-    printf("\nBienvenue dans cette super application de création de SVG !!\n\n");
+    printf("\n\e[1m\033[34mBienvenue dans cette super application de création de SVG !!\033[0m\e[0m\n\n");
 
     viewbox_t *svg_viewbox = create_viewbox();
     
@@ -22,10 +22,14 @@ int main(void) {
 }
 
 
-// system("clear"); ajouter des ("voulez-vous continuer" scanf(1:oui))
+// ajouter forme path
+
+// ajouter fonctionnalite inversion axe x / y
 
 // tester le code a fond !!!!!
 
 // Faire readme !!!!!
 
 // faire javadoc !!!!!
+
+// préparer l'oral

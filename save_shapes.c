@@ -3,6 +3,7 @@
 #include "menu.h"
 #include "shapes.h"
 #include "save_shapes.h"
+#include "cli.h"
 
 
 void save_projet(array_t *array, viewbox_t *viewbox) {
@@ -45,14 +46,18 @@ void save_projet(array_t *array, viewbox_t *viewbox) {
     fprintf(saved_file, "%s", end_viewbox);
     fclose(saved_file);
 
-    printf("Vous pouvez maintenant ouvrir votre sauvegarde projet.svg dans vos fichiers.\n\n");
+    printf("Vous pouvez maintenant ouvrir votre sauvegarde \033[35mprojet.svg\033[0m dans vos fichiers.\n\n");
+
+    ask_for_1("Tapez '1' pour continuer ...",
+        "\033[31mMerci d'entrer 1 pour continuer\033[0m");
 
     menu_for_user(array, viewbox);
 }
 
 
 void save_ellipse(shape_struct_t *shape, FILE *file) {
-    fprintf(file,"<ellipse cx='%d' cy='%d' rx='%d' ry='%d' stroke='rgba(%d,%d,%d,0.%d)' fill='rgba(%d,%d,%d,0.%d)' />",
+    fprintf(file,"<ellipse cx='%d' cy='%d' rx='%d' ry='%d' stroke='rgba(%d,%d,%d,0.%d)' "
+        "fill='rgba(%d,%d,%d,0.%d)' transform='rotate(%d)' />",
         shape->union_shape.ellipse->coordo_center_x,
         shape->union_shape.ellipse->coordo_center_y,
         shape->union_shape.ellipse->rayon_x,
@@ -64,13 +69,15 @@ void save_ellipse(shape_struct_t *shape, FILE *file) {
         shape->union_shape.ellipse->color.fill.r,
         shape->union_shape.ellipse->color.fill.g,
         shape->union_shape.ellipse->color.fill.b,
-        shape->union_shape.ellipse->color.fill.a
+        shape->union_shape.ellipse->color.fill.a,
+        shape->union_shape.ellipse->angle
     );
 }
 
 
 void save_rectangle(shape_struct_t *shape, FILE *file) {
-    fprintf(file,"<rect x='%d' y='%d' width='%d' height='%d' stroke='rgba(%d,%d,%d,0.%d)' fill='rgba(%d,%d,%d,0.%d)' />",
+    fprintf(file,"<rect x='%d' y='%d' width='%d' height='%d' stroke='rgba(%d,%d,%d,0.%d)'"
+        " fill='rgba(%d,%d,%d,0.%d)' transform='rotate(%d)' />",
         shape->union_shape.rectangle->coordo_start_x,
         shape->union_shape.rectangle->coordo_start_y,
         shape->union_shape.rectangle->width,
@@ -82,13 +89,15 @@ void save_rectangle(shape_struct_t *shape, FILE *file) {
         shape->union_shape.rectangle->color.fill.r,
         shape->union_shape.rectangle->color.fill.g,
         shape->union_shape.rectangle->color.fill.b,
-        shape->union_shape.rectangle->color.fill.a
+        shape->union_shape.rectangle->color.fill.a,
+        shape->union_shape.rectangle->angle
     );
 }
 
 
 void save_line(shape_struct_t *shape, FILE *file) {
-    fprintf(file,"<line x1='%d' y1='%d' x2='%d' y2='%d' stroke='rgba(%d,%d,%d,0.%d)' />",
+    fprintf(file,"<line x1='%d' y1='%d' x2='%d' y2='%d' stroke='rgba(%d,%d,%d,0.%d)'"
+        " transform='rotate(%d)' />",
         shape->union_shape.line->coordo_start_x,
         shape->union_shape.line->coordo_start_y,
         shape->union_shape.line->coordo_end_x,
@@ -96,7 +105,8 @@ void save_line(shape_struct_t *shape, FILE *file) {
         shape->union_shape.line->color.stroke.r,
         shape->union_shape.line->color.stroke.g,
         shape->union_shape.line->color.stroke.b,
-        shape->union_shape.line->color.stroke.a
+        shape->union_shape.line->color.stroke.a,
+        shape->union_shape.line->angle
     );
 }
 
@@ -117,7 +127,7 @@ void save_polyline(shape_struct_t *shape, FILE *file) {
         element = element->next;
     }
 
-    fprintf(file,"'/>");
+    fprintf(file,"' transform='rotate(%d)'/>", shape->union_shape.polyline->angle);
 }
 
 
@@ -141,5 +151,5 @@ void save_polygone(shape_struct_t *shape, FILE *file) {
         element = element->next;
     }
 
-    fprintf(file,"'/>");
+    fprintf(file,"' transform='rotate(%d)'/>", shape->union_shape.polygone->angle);
 }

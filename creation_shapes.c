@@ -7,10 +7,15 @@
 
 
 void choice_shape_for_creation(array_t *array, viewbox_t *viewbox) {
+    system("clear");
 
-    user_shape_choice_t choice_shape = ask_for_int_in_range("\nQuelle forme voulez-vous realiser ?\n"
-        "(1: ellipse / 2: rectangle / 3: ligne / 4: polyline / 5: polygone)\n",
-        "Merci d'entrer un nombre entre 1 et 5.",
+    user_shape_choice_t choice_shape = ask_for_int_in_range("Quelle \033[32mforme\033[0m voulez-vous realiser ?\n"
+        "\n1: Ellipse\n"
+        "2: Rectangle\n"
+        "3: Ligne\n"
+        "4: Polyline\n"
+        "5: Polygone\n",
+        "\033[31mMerci d'entrer un nombre entre 1 et 5.\033[0m",
         1,
         5
     );
@@ -35,6 +40,9 @@ void choice_shape_for_creation(array_t *array, viewbox_t *viewbox) {
             printf("Une erreur est survenue");
         break;
     }
+
+    ask_for_1("Tapez '1' pour continuer ...",
+        "\033[31mMerci d'entrer 1 pour continuer\033[0m");
 
     menu_for_user(array, viewbox);
 }

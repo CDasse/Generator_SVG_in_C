@@ -7,23 +7,26 @@
 
 viewbox_t *create_viewbox() {
     printf("Pour commencer, veuillez préciser la dimension "
-        "de votre fenetre de visualisation\n"
+        "de votre \033[32mfenetre de visualisation\033[0m\n"
         "(la largeur puis la hauteur).\n\n");
 
     viewbox_t *viewbox = malloc(sizeof(viewbox_t));
 
     viewbox->coordo_min_x = 0;
     viewbox->coordo_min_y = 0;
-    viewbox->width = ask_for_unsigned_int("largeur: ",
-        "Merci d'entrer un nombre entier.");
-    viewbox->height = ask_for_unsigned_int("hauteur: ",
-        "Merci d'entrer un nombre entier.");
+    viewbox->width = ask_for_unsigned_int("- Largeur: ",
+        "\033[31mMerci d'entrer un nombre entier.\033[0m");
+    viewbox->height = ask_for_unsigned_int("- Hauteur: ",
+        "\033[31mMerci d'entrer un nombre entier.\033[0m");
 
-    printf("Votre fenetre de visualisation aura une largeur "
-        "de %upx et une hauteur de %upx.\n\n", 
+    printf("\nVotre fenetre de visualisation aura une largeur "
+        "de \033[32m%upx\033[0m et une hauteur de \033[32m%upx\033[0m.\n\n", 
         viewbox->width,
         viewbox->height
     );
+
+    ask_for_1("Tapez '1' pour continuer ...",
+        "\033[31mMerci d'entrer 1 pour continuer\033[0m");
 
     return viewbox;
 }
@@ -69,7 +72,7 @@ void free_shape_in_table(shape_struct_t *shape) {
             free_elements_in_liste(shape->union_shape.polygone);
         break;
         default :
-            printf("Une erreur est survenue");
+            printf("\033[31mUne erreur est survenue\033[0m");
             break;
         }
         free(shape);
@@ -77,42 +80,50 @@ void free_shape_in_table(shape_struct_t *shape) {
 
 
 ellipse_t *create_ellipse() {
-    printf ("\nVeuillez préciser les informations concernant votre ellipse.\n"
-        "(coordo x du point central / coordo y du point central"
-        " / rayon en x / rayon en y / couleurs en rgba)\n\n"
+    system("clear");
+
+    printf ("Veuillez préciser les informations concernant votre \033[33mellipse\033[0m.\n"
+        "(coordo x / y du point central / rayon en x / rayon en y /"
+        " couleurs en rgba / angle de rotation)\n\n"
     );
 
     ellipse_t *ellipse = malloc(sizeof(ellipse_t));
 
-    ellipse->coordo_center_x = ask_for_unsigned_int("coordo centre x: ",
-        "Merci d'entrer un nombre entier.");
-    ellipse->coordo_center_y = ask_for_unsigned_int("coordo centre y: ",
-        "Merci d'entrer un nombre entier.");
-    ellipse->rayon_x = ask_for_unsigned_int("rayon x: ",
-        "Merci d'entrer un nombre entier.");
-    ellipse->rayon_y = ask_for_unsigned_int("rayon y: ",
-        "Merci d'entrer un nombre entier.");
+    printf("\n\033[33mCOORDONNEES\033[0m\n");
+    ellipse->coordo_center_x = ask_for_unsigned_int("- Coordo centre x: ",
+        "\033[31mMerci d'entrer un nombre entier.\033[0m");
+    ellipse->coordo_center_y = ask_for_unsigned_int("- Coordo centre y: ",
+        "\033[31mMerci d'entrer un nombre entier.\033[0m");
+    ellipse->rayon_x = ask_for_unsigned_int("- Rayon x: ",
+        "\033[31mMerci d'entrer un nombre entier.\033[0m");
+    ellipse->rayon_y = ask_for_unsigned_int("- Rayon y: ",
+        "\033[31mMerci d'entrer un nombre entier.\033[0m");
     
-    ellipse->color.stroke.r = ask_color("couleur de trait en rgba (r): ",
-        "Merci d'entrer un nombre entre 0 et 255.");
-    ellipse->color.stroke.g = ask_color("couleur de trait (g): ",
-        "Merci d'entrer un nombre entre 0 et 255.");
-    ellipse->color.stroke.b = ask_color("couleur de trait (b): ",
-        "Merci d'entrer un nombre entre 0 et 255.");
-    ellipse->color.stroke.a = ask_opacity_color("opacite de trait (decimal de a) entre 0 et 9: ",
-        "Merci d'entrer un nombre entre 0 et 9.");
-    ellipse->color.fill.r = ask_color("couleur de fond en rgba (r): ",
-        "Merci d'entrer un nombre entre 0 et 255.");
-    ellipse->color.fill.g = ask_color("couleur de fond (g): ",
-        "Merci d'entrer un nombre entre 0 et 255.");
-    ellipse->color.fill.b = ask_color("couleur de fond (b): ",
-        "Merci d'entrer un nombre entre 0 et 255.");
-    ellipse->color.fill.a = ask_opacity_color("opacite de fond (decimal de a) entre 0 et 9: ",
-        "Merci d'entrer un nombre entre 0 et 9.");
+    printf("\n\033[33mCOULEURS\033[0m\n");
+    ellipse->color.stroke.r = ask_color("- Couleur de trait en rgba \033[31m(r)\033[0m: ",
+        "\033[31mMerci d'entrer un nombre entre 0 et 255.\033[0m");
+    ellipse->color.stroke.g = ask_color("- Couleur de trait \033[32m(g)\033[0m: ",
+        "\033[31mMerci d'entrer un nombre entre 0 et 255.\033[0m");
+    ellipse->color.stroke.b = ask_color("- Couleur de trait \033[34m(b)\033[0m: ",
+        "\033[31mMerci d'entrer un nombre entre 0 et 255.\033[0m");
+    ellipse->color.stroke.a = ask_opacity_color("- Opacite de trait (decimal de a) entre 0 et 9: ",
+        "\033[31mMerci d'entrer un nombre entre 0 et 9.\033[0m");
+    ellipse->color.fill.r = ask_color("\n- Couleur de fond en rgba \033[31m(r)\033[0m: ",
+        "\033[31mMerci d'entrer un nombre entre 0 et 255.\033[0m");
+    ellipse->color.fill.g = ask_color("- Couleur de fond \033[32m(g)\033[0m: ",
+        "\033[31mMerci d'entrer un nombre entre 0 et 255.\033[0m");
+    ellipse->color.fill.b = ask_color("- Couleur de fond \033[34m(b)\033[0m: ",
+        "\033[31mMerci d'entrer un nombre entre 0 et 255.\033[0m");
+    ellipse->color.fill.a = ask_opacity_color("- Opacite de fond (decimal de a) entre 0 et 9: ",
+        "\033[31mMerci d'entrer un nombre entre 0 et 9.\033[0m");
 
-    printf("Votre ellipse aura un centre de coordonnées : x = %d / y = %d,"
-        " un rayon x = %dpx, un rayon y = %dpx, \nune couleur de trait = rgba(%d,%d,%d,0.%d)"
-        " et une couleur de fond = rgba(%d,%d,%d,0.%d).\n\n", 
+    printf("\n\033[33mANGLE\033[0m\n");
+    ellipse->angle = ask_for_int("- Angle de rotation: ",
+        "\033[31mMerci d'entrer un nombre entier.\033[0m");
+
+    printf("\nVotre \033[33mellipse\033[0m aura un centre de coordonnées : x = \033[33m%d\033[0m / y = \033[33m%d\033[0m,"
+        " un rayon x = \033[33m%dpx\033[0m, un rayon y = \033[33m%dpx\033[0m, \nune couleur de trait = \033[33mrgba(%d,%d,%d,0.%d)\033[0m,"
+        " une couleur de fond = \033[33mrgba(%d,%d,%d,0.%d)\033[0m et un angle = \033[33m%d°\033[0m.\n\n", 
         ellipse->coordo_center_x,
         ellipse->coordo_center_y,
         ellipse->rayon_x,
@@ -124,7 +135,8 @@ ellipse_t *create_ellipse() {
         ellipse->color.fill.r,
         ellipse->color.fill.g,
         ellipse->color.fill.b,
-        ellipse->color.fill.a
+        ellipse->color.fill.a,
+        ellipse->angle
     );
 
     return ellipse;
@@ -137,40 +149,49 @@ void free_ellipse(ellipse_t *ellipse) {
 
 
 rect_t *create_rect() {
-    printf ("\nVeuillez préciser les informations concernant votre rectangle.\n"
+    system("clear");
+
+    printf ("Veuillez préciser les informations concernant votre \033[32mrectangle\033[0m.\n"
         " (coordo x du premier point / coordo y du premier point"
-        " / largeur / hauteur / couleurs en rgba)\n\n");
+        " / largeur / hauteur / couleurs en rgba / angle de rotation)\n\n");
     
     rect_t *rect = malloc(sizeof(rect_t));
 
-    rect->coordo_start_x = ask_for_unsigned_int("coordo x: ",
-        "Merci d'entrer un nombre entier.");
-    rect->coordo_start_y = ask_for_unsigned_int("coordo y: ",
-        "Merci d'entrer un nombre entier.");
-    rect->width = ask_for_unsigned_int("largeur: ",
-        "Merci d'entrer un nombre entier.");
-    rect->height = ask_for_unsigned_int("hauteur: ",
-        "Merci d'entrer un nombre entier.");
-    rect->color.stroke.r = ask_color("couleur de trait en rgba (r): ",
-        "Merci d'entrer un nombre entre 0 et 255.");
-    rect->color.stroke.g = ask_color("couleur de trait (g): ",
-        "Merci d'entrer un nombre entre 0 et 255.");
-    rect->color.stroke.b = ask_color("couleur de trait (b): ",
-        "Merci d'entrer un nombre entre 0 et 255.");
-    rect->color.stroke.a = ask_opacity_color("opacite de trait (decimal de a) entre 0 et 9: ",
-        "Merci d'entrer un nombre entre 0 et 9.");
-    rect->color.fill.r = ask_color("couleur de fond en rgba (r): ",
-        "Merci d'entrer un nombre entre 0 et 255.");
-    rect->color.fill.g = ask_color("couleur de fond (g): ",
-        "Merci d'entrer un nombre entre 0 et 255.");
-    rect->color.fill.b = ask_color("couleur de fond (b): ",
-        "Merci d'entrer un nombre entre 0 et 255.");
-    rect->color.fill.a = ask_opacity_color("opacite de fond (decimal de a) entre 0 et 9: ",
-        "Merci d'entrer un nombre entre 0 et 9.");
+    printf("\n\033[32mCOORDONNEES\033[0m\n");
+    rect->coordo_start_x = ask_for_unsigned_int("- Coordo x: ",
+        "\033[31mMerci d'entrer un nombre entier.\033[0m");
+    rect->coordo_start_y = ask_for_unsigned_int("- Coordo y: ",
+        "\033[31mMerci d'entrer un nombre entier.\033[0m");
+    rect->width = ask_for_unsigned_int("- Largeur: ",
+        "\033[31mMerci d'entrer un nombre entier.\033[0m");
+    rect->height = ask_for_unsigned_int("- Hauteur: ",
+        "\033[31mMerci d'entrer un nombre entier.\033[0m");
 
-    printf("Votre rectangle aura son premier point aux coordonnées : x = %d / y = %d,"
-        " une largeur de %dpx, une hauteur de %dpx, \nune couleur de trait = rgba(%d,%d,%d,0.%d)"
-        " et une couleur de fond = rgba(%d,%d,%d,0.%d).\n\n", 
+    printf("\n\033[32mCOULEURS\033[0m\n");
+    rect->color.stroke.r = ask_color("- Couleur de trait en rgba \033[31m(r)\033[0m: ",
+        "\033[31mMerci d'entrer un nombre entre 0 et 255.\033[0m");
+    rect->color.stroke.g = ask_color("- Couleur de trait \033[32m(g)\033[0m: ",
+        "\033[31mMerci d'entrer un nombre entre 0 et 255.\033[0m");
+    rect->color.stroke.b = ask_color("- Couleur de trait \033[34m(b)\033[0m: ",
+        "\033[31mMerci d'entrer un nombre entre 0 et 255.\033[0m");
+    rect->color.stroke.a = ask_opacity_color("- Opacite de trait (decimal de a) entre 0 et 9: ",
+        "\033[31mMerci d'entrer un nombre entre 0 et 9.\033[0m");
+    rect->color.fill.r = ask_color("\n- Couleur de fond en rgba \033[31m(r)\033[0m: ",
+        "\033[31mMerci d'entrer un nombre entre 0 et 255.\033[0m");
+    rect->color.fill.g = ask_color("- Couleur de fond \033[32m(g)\033[0m: ",
+        "\033[31mMerci d'entrer un nombre entre 0 et 255.\033[0m");
+    rect->color.fill.b = ask_color("- Couleur de fond \033[34m(b)\033[0m: ",
+        "\033[31mMerci d'entrer un nombre entre 0 et 255.\033[0m");
+    rect->color.fill.a = ask_opacity_color("- Opacite de fond (decimal de a) entre 0 et 9: ",
+        "\033[31mMerci d'entrer un nombre entre 0 et 9.\033[0m");
+
+    printf("\n\033[32mANGLE\033[0m\n");
+    rect->angle = ask_for_int("- Angle de rotation: ",
+        "\033[31mMerci d'entrer un nombre entier.\033[0m");
+
+    printf("\nVotre rectangle aura son premier point aux coordonnées : x = \033[32m%d\033[0m / y = \033[32m%d\033[0m,"
+        " une largeur de \033[32m%dpx\033[0m, une hauteur de \033[32m%dpx\033[0m, \nune couleur de trait = \033[32mrgba(%d,%d,%d,0.%d)\033[0m,"
+        " une couleur de fond = \033[32mrgba(%d,%d,%d,0.%d)\033[0m et un angle = \033[32m%d°\033[0m.\n\n", 
         rect->coordo_start_x,
         rect->coordo_start_y,
         rect->width,
@@ -182,7 +203,8 @@ rect_t *create_rect() {
         rect->color.fill.r,
         rect->color.fill.g,
         rect->color.fill.b,
-        rect->color.fill.a
+        rect->color.fill.a,
+        rect->angle
     );
     
     return rect;
@@ -195,33 +217,42 @@ void free_rect(rect_t *rect) {
 
 
 line_t *create_line() {
-    printf ("\nVeuillez préciser les informations concernant votre ligne.\n"
+    system("clear");
+    
+    printf ("Veuillez préciser les informations concernant votre \033[36mligne\033[0m.\n"
         " (x du premier point / y du premier point / x du deuxieme point"
-        " / y du deuxieme point / couleur en rgba)\n\n"
+        " / y du deuxieme point / couleur en rgba / angle de rotation)\n\n"
     );
     
     line_t *line = malloc(sizeof(line_t));
 
-    line->coordo_start_x = ask_for_unsigned_int("coordo x: ",
-        "Merci d'entrer un nombre entier.");
-    line->coordo_start_y = ask_for_unsigned_int("coordo y: ",
-        "Merci d'entrer un nombre entier.");
-    line->coordo_end_x = ask_for_unsigned_int("largeur: ",
-        "Merci d'entrer un nombre entier.");
-    line->coordo_end_y = ask_for_unsigned_int("hauteur: ",
-        "Merci d'entrer un nombre entier.");
-    line->color.stroke.r = ask_color("couleur de trait en rgba (r): ",
-        "Merci d'entrer un nombre entre 0 et 255.");
-    line->color.stroke.g = ask_color("couleur de trait (g): ",
-        "Merci d'entrer un nombre entre 0 et 255.");
-    line->color.stroke.b = ask_color("couleur de trait (b): ",
-        "Merci d'entrer un nombre entre 0 et 255.");
-    line->color.stroke.a = ask_opacity_color("opacite de trait (decimal de a) entre 0 et 9: ",
-        "Merci d'entrer un nombre entre 0 et 9.");
+    printf("\n\033[36mCOORDONNEES\033[0m\n");
+    line->coordo_start_x = ask_for_unsigned_int("- Coordo x: ",
+        "\033[31mMerci d'entrer un nombre entier.\033[0m");
+    line->coordo_start_y = ask_for_unsigned_int("- Coordo y: ",
+        "\033[31mMerci d'entrer un nombre entier.\033[0m");
+    line->coordo_end_x = ask_for_unsigned_int("- Largeur: ",
+        "\033[31mMerci d'entrer un nombre entier.\033[0m");
+    line->coordo_end_y = ask_for_unsigned_int("- Hauteur: ",
+        "\033[31mMerci d'entrer un nombre entier.\033[0m");
 
-    printf("Votre ligne aura son premier point aux coordonnées : x = %d / y = %d,"
-        " son deuxieme point aux coordonnées : x = %d / y = %d et\n"
-        " une couleur de trait = rgba(%d,%d,%d,0.%d).\n\n", 
+    printf("\n\033[36mCOULEURS\033[0m\n");
+    line->color.stroke.r = ask_color("- Couleur de trait en rgba \033[31m(r)\033[0m: ",
+        "\033[31mMerci d'entrer un nombre entre 0 et 255.\033[0m");
+    line->color.stroke.g = ask_color("- Couleur de trait \033[32m(g)\033[0m: ",
+        "\033[31mMerci d'entrer un nombre entre 0 et 255.\033[0m");
+    line->color.stroke.b = ask_color("- Couleur de trait \033[34m(b)\033[0m: ",
+        "\033[31mMerci d'entrer un nombre entre 0 et 255.\033[0m");
+    line->color.stroke.a = ask_opacity_color("- Opacite de trait (decimal de a) entre 0 et 9: ",
+        "\033[31mMerci d'entrer un nombre entre 0 et 9.\033[0m");
+
+    printf("\n\033[36mANGLE\033[0m\n");
+    line->angle = ask_for_int("- Angle de rotation: ",
+        "\033[31mMerci d'entrer un nombre entier.\033[0m");
+
+    printf("\nVotre ligne aura son premier point aux coordonnées : x = \033[36m%d\033[0m / y = \033[36m%d\033[0m,"
+        " son deuxieme point aux coordonnées : x = \033[36m%d\033[0m / y = \033[36m%d\033[0m,\n"
+        " une couleur de trait = \033[36mrgba(%d,%d,%d,0.%d)\033[0m et un angle = \033[36m%d°\033[0m.\n\n", 
         line->coordo_start_x,
         line->coordo_start_y,
         line->coordo_end_x,
@@ -229,7 +260,8 @@ line_t *create_line() {
         line->color.stroke.r,
         line->color.stroke.g,
         line->color.stroke.b,
-        line->color.stroke.a
+        line->color.stroke.a,
+        line->angle
     );
     
     return line;
@@ -253,8 +285,10 @@ void free_all(array_t *array, viewbox_t *viewbox) {
 
 
 liste_t *create_polyline() {
-    printf ("\nVeuillez préciser les informations concernant votre polyline.\n"
-    "(coordos x des points / coordos y des points)\n\n");
+    system("clear");
+    
+    printf ("Veuillez préciser les informations concernant votre \033[35mpolyline\033[0m.\n"
+    "(coordo x des points / coordo y des points / couleur en rbga / angle de rotation)\n\n");
 
     liste_t *liste = malloc(sizeof(liste_t));
     liste->length = 0;
@@ -262,43 +296,51 @@ liste_t *create_polyline() {
 
     int choice_user = 1;
 
+    printf("\n\033[35mCOORDONNEES\033[0m\n");
     do {
         list_element_t *liste_element = malloc(sizeof(list_element_t));
 
         push_in_list(
             liste,
             liste_element,
-            ask_for_unsigned_int("coordo x: ", "Merci d'entrer un nombre entier."), 
+            ask_for_unsigned_int("- Coordo x: ", "\033[31mMerci d'entrer un nombre entier.\033[0m"), 
             // probleme de buffering du stdout probable (affichage y avant x)
-            ask_for_unsigned_int("coordo y: ", "Merci d'entrer un nombre entier.")
+            ask_for_unsigned_int("- Coordo y: ", "\033[31mMerci d'entrer un nombre entier.\033[0m")
         );
 
         choice_user = ask_for_int_in_range(
-            "Voulez-vous ajouter un point à votre polyline ? (1: oui / 2: non)\n",
-            "Merci d'entrer 1 ou 2.",
+            "Voulez-vous ajouter un point à votre \033[35mpolyline\033[0m ? (1: oui / 2: non)\n",
+            "\033[31mMerci d'entrer 1 ou 2.\033[0m",
             1,
             2
         );
     } while (choice_user == 1);
 
-    liste->color.stroke.r = ask_color("couleur de trait en rgba (r): ",
-        "Merci d'entrer un nombre entre 0 et 255.");
-    liste->color.stroke.g = ask_color("couleur de trait (g): ",
-        "Merci d'entrer un nombre entre 0 et 255.");
-    liste->color.stroke.b = ask_color("couleur de trait (b): ",
-        "Merci d'entrer un nombre entre 0 et 255.");
-    liste->color.stroke.a = ask_opacity_color("opacite de trait (decimal de a) entre 0 et 9: ",
-        "Merci d'entrer un nombre entre 0 et 9.");
+    printf("\n\033[35mCOULEURS\033[0m\n");
+    liste->color.stroke.r = ask_color("- Couleur de trait en rgba \033[31m(r)\033[0m: ",
+        "\033[31mMerci d'entrer un nombre entre 0 et 255.\033[0m");
+    liste->color.stroke.g = ask_color("- Couleur de trait \033[32m(g)\033[0m: ",
+        "\033[31mMerci d'entrer un nombre entre 0 et 255.\033[0m");
+    liste->color.stroke.b = ask_color("- Couleur de trait \033[34m(b)\033[0m: ",
+        "\033[31mMerci d'entrer un nombre entre 0 et 255.\033[0m");
+    liste->color.stroke.a = ask_opacity_color("- Opacite de trait (decimal de a) entre 0 et 9: ",
+        "\033[31mMerci d'entrer un nombre entre 0 et 9.\033[0m");
 
-    printf("\nVotre polyline aura %d points.\n\n", liste->length);
+    printf("\n\033[35mANGLE\033[0m\n");
+    liste->angle = ask_for_int("- Angle de rotation: ",
+        "\033[31mMerci d'entrer un nombre entier.\033[0m");
+
+    printf("\nVotre polyline aura \033[35m%d\033[0m points.\n\n", liste->length);
 
     return liste;
 }
 
 
 liste_t *create_polygone() {
-    printf ("\nVeuillez préciser les informations concernant votre polygone.\n"
-    "(coordos x des points / coordos y des points)\n\n");
+    system("clear");
+    
+    printf ("Veuillez préciser les informations concernant votre \033[34mpolygone\033[0m.\n"
+    "(coordo x des points / coordo y des points / couleurs en rgba / angle de rotation)\n\n");
 
     liste_t *liste = malloc(sizeof(liste_t));
     liste->length = 0;
@@ -306,43 +348,49 @@ liste_t *create_polygone() {
 
     int choice_user = 1;
 
+    printf("\n\033[34mCOORDONNEES\033[0m\n");
     do {
         list_element_t *liste_element = malloc(sizeof(list_element_t));
 
         push_in_list(
             liste,
             liste_element,
-            ask_for_unsigned_int("coordo x: ", "Merci d'entrer un nombre entier."), 
+            ask_for_unsigned_int("- Coordo x: ", "\033[31mMerci d'entrer un nombre entier.\033[0m"), 
             // probleme de buffering du stdout probable (affichage y avant x)
-            ask_for_unsigned_int("coordo y: ", "Merci d'entrer un nombre entier.")
+            ask_for_unsigned_int("- Coordo y: ", "\033[31mMerci d'entrer un nombre entier.\033[0m")
         );
 
         choice_user = ask_for_int_in_range(
-            "Voulez-vous ajouter un point à votre polygone ? (1: oui / 2: non)\n",
-            "Merci d'entrer 1 ou 2.",
+            "Voulez-vous ajouter un point à votre \033[34mpolygone\033[0m ? (1: oui / 2: non)\n",
+            "\033[31mMerci d'entrer 1 ou 2.\033[0m",
             1,
             2
         );
     } while (choice_user == 1);
 
-    liste->color.stroke.r = ask_color("couleur de trait en rgba (r): ",
-        "Merci d'entrer un nombre entre 0 et 255.");
-    liste->color.stroke.g = ask_color("couleur de trait (g): ",
-        "Merci d'entrer un nombre entre 0 et 255.");
-    liste->color.stroke.b = ask_color("couleur de trait (b): ",
-        "Merci d'entrer un nombre entre 0 et 255.");
-    liste->color.stroke.a = ask_opacity_color("opacite de trait (decimal de a) entre 0 et 9: ",
-        "Merci d'entrer un nombre entre 0 et 9.");
-    liste->color.fill.r = ask_color("couleur de fond en rgba (r): ",
-        "Merci d'entrer un nombre entre 0 et 255.");
-    liste->color.fill.g = ask_color("couleur de fond (g): ",
-        "Merci d'entrer un nombre entre 0 et 255.");
-    liste->color.fill.b = ask_color("couleur de fond (b): ",
-        "Merci d'entrer un nombre entre 0 et 255.");
-    liste->color.fill.a = ask_opacity_color("opacite de fond (decimal de a) entre 0 et 9: ",
-        "Merci d'entrer un nombre entre 0 et 9.");
+    printf("\n\033[34mCOULEURS\033[0m\n");
+    liste->color.stroke.r = ask_color("- Couleur de trait en rgba \033[31m(r)\033[0m: ",
+        "\033[31mMerci d'entrer un nombre entre 0 et 255.\033[0m");
+    liste->color.stroke.g = ask_color("- Couleur de trait \033[32m(g)\033[0m: ",
+        "\033[31mMerci d'entrer un nombre entre 0 et 255.\033[0m");
+    liste->color.stroke.b = ask_color("- Couleur de trait \033[34m(b)\033[0m: ",
+        "\033[31mMerci d'entrer un nombre entre 0 et 255.\033[0m");
+    liste->color.stroke.a = ask_opacity_color("- Opacite de trait (decimal de a) entre 0 et 9: ",
+        "\033[31mMerci d'entrer un nombre entre 0 et 9.\033[0m");
+    liste->color.fill.r = ask_color("\n- Couleur de fond en rgba \033[31m(r)\033[0m: ",
+        "\033[31mMerci d'entrer un nombre entre 0 et 255.\033[0m");
+    liste->color.fill.g = ask_color("- Couleur de fond \033[32m(g)\033[0m: ",
+        "\033[31mMerci d'entrer un nombre entre 0 et 255.\033[0m");
+    liste->color.fill.b = ask_color("- Couleur de fond \033[34m(b)\033[0m: ",
+        "\033[31mMerci d'entrer un nombre entre 0 et 255.\033[0m");
+    liste->color.fill.a = ask_opacity_color("- Opacite de fond (decimal de a) entre 0 et 9: ",
+        "\033[31mMerci d'entrer un nombre entre 0 et 9.\033[0m");
 
-    printf("\nVotre polygone aura %d points.\n\n", liste->length);
+    printf("\n\033[34mANGLE\033[0m\n");
+    liste->angle = ask_for_int("- Angle de rotation: ",
+        "\033[31mMerci d'entrer un nombre entier.\033[0m");
+
+    printf("\nVotre polygone aura \033[34m%d\033[0m points.\n\n", liste->length);
 
     return liste;
 }

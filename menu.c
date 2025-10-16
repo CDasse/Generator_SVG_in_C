@@ -10,10 +10,15 @@
 
 
 void menu_for_user(array_t *array, viewbox_t *viewbox) {
+    system("clear");
 
-    user_menu_choice_t choice_menu = ask_for_int_in_range("Que voulez-vous faire ?\n"
-        "(1: creation / 2: edition / 3: suppression / 4: sauvegarde / 5: quitter)\n",
-        "Merci d'entrer un nombre entre 1 et 5.",
+    user_menu_choice_t choice_menu = ask_for_int_in_range("Que voulez-vous \033[35mfaire\033[0m ?\n"
+        "\n1: Creation\n"
+        "2: Edition\n"
+        "3: Suppression\n"
+        "4: Sauvegarde\n"
+        "5: Quitter\n",
+        "\033[31mMerci d'entrer un nombre entre 1 et 5.\033[0m",
         1,
         5
     );
@@ -33,10 +38,11 @@ void menu_for_user(array_t *array, viewbox_t *viewbox) {
             save_projet(array, viewbox);
         break;
         case CHOICE_EXIT:
-            printf("\nMerci d'avoir utilisé l'application.\nA bientot !\n\n");
+            printf("\n\e[1m\033[34mMerci d'avoir utilisé l'application.\nA bientot !\e[1m\033[0m\n\n");
         break;
         default:
-            printf("Erreur dans votre choix de menu");
+            printf("\033[31mErreur dans votre choix de menu\033[0m");
         break;
     }
+
 }
