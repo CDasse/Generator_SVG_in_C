@@ -8,6 +8,12 @@ typedef struct list_element_s list_element_t;
 
 typedef struct liste_s liste_t;
 
+typedef struct stroke_s stroke_t;
+
+typedef struct fill_s fill_t;
+
+typedef struct color_s color_t;
+
 
 typedef struct viewbox_s {
     int coordo_min_x;
@@ -17,11 +23,34 @@ typedef struct viewbox_s {
 } viewbox_t;
 
 
+typedef struct stroke_s {
+    int r;
+    int g;
+    int b;
+    int a;
+} stroke_t;
+
+
+typedef struct fill_s {
+    int r;
+    int g;
+    int b;
+    int a;
+} fill_t;
+
+
+typedef struct color_s {
+    stroke_t stroke;
+    fill_t fill;
+} color_t;
+
+
 typedef struct ellipse_s {
     int coordo_center_x;
     int coordo_center_y;
     int rayon_x;
     int rayon_y;
+    color_t color;
 } ellipse_t;
 
 
@@ -30,6 +59,7 @@ typedef struct rect_s {
     int coordo_start_y;
     int width;
     int height;
+    color_t color;
 } rect_t;
 
 
@@ -38,6 +68,7 @@ typedef struct line_s {
     int coordo_start_y;
     int coordo_end_x;
     int coordo_end_y;
+    color_t color;
 } line_t;
 
 
@@ -98,6 +129,7 @@ typedef struct list_element_s {
 
 typedef struct liste_s {
     int length;
+    color_t color;
     list_element_t *start;
 } liste_t;
 
@@ -112,6 +144,8 @@ array_t *create_array();
 void initialize_array(array_t *array);
 
 void free_shape_in_table(shape_struct_t *shape);
+
+int ask_for_confirmation();
 
 
 ellipse_t *create_ellipse();

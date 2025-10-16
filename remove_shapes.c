@@ -8,6 +8,8 @@
 
 
 void choice_shape_for_remove(array_t *array, viewbox_t *viewbox) {
+    printf("\n");
+
     if (array->index == 0) {
         printf("Aucune forme n'est creee! \n\n");
     } else {
@@ -19,15 +21,33 @@ void choice_shape_for_remove(array_t *array, viewbox_t *viewbox) {
         );
 
         if (array->table[choice_user_remove] == NULL) {
-            printf("Cette forme a deja ete supprimee.\n");
+            printf("Cette forme a deja ete supprimee.\n\n");
             menu_for_user(array, viewbox);
             return;
         }
 
-        free_shape_in_table(array->table[choice_user_remove]);
+        int choice_user = ask_for_confirmation();
 
-        array->table[choice_user_remove] = NULL;
+        if (choice_user == 1) {
+            free_shape_in_table(array->table[choice_user_remove]);
+
+            array->table[choice_user_remove] = NULL;
+        } else {
+            menu_for_user(array, viewbox);
+        }
     }
 
     menu_for_user(array, viewbox);
+}
+
+
+int ask_for_confirmation() {
+    int choice_user = ask_for_int_in_range ("Etes-vous sur de vouloir supprimer cette forme ?\n"
+    "(1: OUI / 2: NON)\n",
+    "Merci d'entrer 1 ou 2.\n",
+    1,
+    2
+    );
+
+    return choice_user;
 }

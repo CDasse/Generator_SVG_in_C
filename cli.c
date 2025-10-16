@@ -53,7 +53,6 @@ int ask_for_int_in_range(char *message, char *error_message, int min, int max) {
         fprintf(stdout, "%s", message);
 
         if ((scanf ("%d", &temp) > 0) && (temp > (min - 1)) && (temp < (max + 1))) {
-            printf("\n");
             is_user_input_valid = true;
         } else {
             fprintf(stdout, "%s\n", error_message);
@@ -107,4 +106,18 @@ int ask_for_int_in_liste(char *message, char *error_message, liste_t *liste) {
     }
    
     return temp;
+}
+
+
+int ask_color (char *message, char *error_message) {
+    int r = ask_for_int_in_range ( message, error_message, 0, 255);
+
+    return r;
+}
+
+
+int ask_opacity_color (char *message, char *error_message) {
+    int a = ask_for_int_in_range ( message, error_message, 0, 9);
+
+    return a;
 }

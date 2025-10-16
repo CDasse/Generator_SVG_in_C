@@ -6,6 +6,7 @@
 
 
 void save_projet(array_t *array, viewbox_t *viewbox) {
+    printf("\n");
     char end_viewbox[] = "\n</svg>";
 
     FILE *saved_file = fopen("projet.svg", "w");
@@ -44,38 +45,58 @@ void save_projet(array_t *array, viewbox_t *viewbox) {
     fprintf(saved_file, "%s", end_viewbox);
     fclose(saved_file);
 
-    printf("Vous pouvez maintenant ouvrir votre sauvegarde projet.svg dans vos fichiers.\n");
+    printf("Vous pouvez maintenant ouvrir votre sauvegarde projet.svg dans vos fichiers.\n\n");
 
     menu_for_user(array, viewbox);
 }
 
 
 void save_ellipse(shape_struct_t *shape, FILE *file) {
-    fprintf(file,"<ellipse cx='%d' cy='%d' rx='%d' ry='%d' fill='#ff000080' />",
+    fprintf(file,"<ellipse cx='%d' cy='%d' rx='%d' ry='%d' stroke='rgba(%d,%d,%d,0.%d)' fill='rgba(%d,%d,%d,0.%d)' />",
         shape->union_shape.ellipse->coordo_center_x,
         shape->union_shape.ellipse->coordo_center_y,
         shape->union_shape.ellipse->rayon_x,
-        shape->union_shape.ellipse->rayon_y
+        shape->union_shape.ellipse->rayon_y,
+        shape->union_shape.ellipse->color.stroke.r,
+        shape->union_shape.ellipse->color.stroke.g,
+        shape->union_shape.ellipse->color.stroke.b,
+        shape->union_shape.ellipse->color.stroke.a,
+        shape->union_shape.ellipse->color.fill.r,
+        shape->union_shape.ellipse->color.fill.g,
+        shape->union_shape.ellipse->color.fill.b,
+        shape->union_shape.ellipse->color.fill.a
     );
 }
 
 
 void save_rectangle(shape_struct_t *shape, FILE *file) {
-    fprintf(file,"<rect x='%d' y='%d' width='%d' height='%d' fill='#00ff0080' />",
+    fprintf(file,"<rect x='%d' y='%d' width='%d' height='%d' stroke='rgba(%d,%d,%d,0.%d)' fill='rgba(%d,%d,%d,0.%d)' />",
         shape->union_shape.rectangle->coordo_start_x,
         shape->union_shape.rectangle->coordo_start_y,
         shape->union_shape.rectangle->width,
-        shape->union_shape.rectangle->height
+        shape->union_shape.rectangle->height,
+        shape->union_shape.rectangle->color.stroke.r,
+        shape->union_shape.rectangle->color.stroke.g,
+        shape->union_shape.rectangle->color.stroke.b,
+        shape->union_shape.rectangle->color.stroke.a,
+        shape->union_shape.rectangle->color.fill.r,
+        shape->union_shape.rectangle->color.fill.g,
+        shape->union_shape.rectangle->color.fill.b,
+        shape->union_shape.rectangle->color.fill.a
     );
 }
 
 
 void save_line(shape_struct_t *shape, FILE *file) {
-    fprintf(file,"<line x1='%d' y1='%d' x2='%d' y2='%d' stroke='#0000ff80' />",
+    fprintf(file,"<line x1='%d' y1='%d' x2='%d' y2='%d' stroke='rgba(%d,%d,%d,0.%d)' />",
         shape->union_shape.line->coordo_start_x,
         shape->union_shape.line->coordo_start_y,
         shape->union_shape.line->coordo_end_x,
-        shape->union_shape.line->coordo_end_y
+        shape->union_shape.line->coordo_end_y,
+        shape->union_shape.line->color.stroke.r,
+        shape->union_shape.line->color.stroke.g,
+        shape->union_shape.line->color.stroke.b,
+        shape->union_shape.line->color.stroke.a
     );
 }
 
@@ -84,7 +105,12 @@ void save_polyline(shape_struct_t *shape, FILE *file) {
     liste_t *polyline = shape->union_shape.polyline;
     list_element_t *element = polyline->start;
 
-    fprintf(file,"<polyline fill='none' stroke='black' points='");
+    fprintf(file,"<polyline fill='none' stroke='rgba(%d,%d,%d,0.%d)' points='",
+        shape->union_shape.polyline->color.stroke.r,
+        shape->union_shape.polyline->color.stroke.g,
+        shape->union_shape.polyline->color.stroke.b,
+        shape->union_shape.polyline->color.stroke.a
+    );
 
     while (element != NULL) {
         fprintf(file,"%d,%d ", element->value1, element->value2);
@@ -99,7 +125,16 @@ void save_polygone(shape_struct_t *shape, FILE *file) {
     liste_t *polygone = shape->union_shape.polygone;
     list_element_t *element = polygone->start;
 
-    fprintf(file,"<polygon fill='#ffff0080' stroke='black' points='");
+    fprintf(file,"<polygon fill='rgba(%d,%d,%d,0.%d)' stroke='rgba(%d,%d,%d,0.%d)' points='",
+        shape->union_shape.polygone->color.stroke.r,
+        shape->union_shape.polygone->color.stroke.g,
+        shape->union_shape.polygone->color.stroke.b,
+        shape->union_shape.polygone->color.stroke.a,
+        shape->union_shape.polygone->color.fill.r,
+        shape->union_shape.polygone->color.fill.g,
+        shape->union_shape.polygone->color.fill.b,
+        shape->union_shape.polygone->color.fill.a
+    );
 
     while (element != NULL) {
         fprintf(file,"%d,%d ", element->value1, element->value2);

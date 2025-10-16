@@ -7,4 +7,7 @@
 void choice_shape_for_remove(array_t *array, viewbox_t *viewbox);
 
 
+int ask_for_confirmation();
+
+
 #endif

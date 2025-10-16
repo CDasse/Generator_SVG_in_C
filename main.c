@@ -5,6 +5,8 @@
 
 
 int main(void) {
+
+    system("clear");
     
     printf("\nBienvenue dans cette super application de création de SVG !!\n\n");
 
@@ -20,10 +22,10 @@ int main(void) {
 }
 
 
-// ajouter fonctionnalite couleur ??
+// system("clear"); ajouter des ("voulez-vous continuer" scanf(1:oui))
 
 // tester le code a fond !!!!!
 
 // Faire readme !!!!!
 
-// faire javadoc !!!!
+// faire javadoc !!!!!

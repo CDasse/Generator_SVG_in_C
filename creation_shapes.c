@@ -7,7 +7,8 @@
 
 
 void choice_shape_for_creation(array_t *array, viewbox_t *viewbox) {
-    user_shape_choice_t choice_shape = ask_for_int_in_range("Quelle forme voulez-vous realiser ?\n"
+
+    user_shape_choice_t choice_shape = ask_for_int_in_range("\nQuelle forme voulez-vous realiser ?\n"
         "(1: ellipse / 2: rectangle / 3: ligne / 4: polyline / 5: polygone)\n",
         "Merci d'entrer un nombre entre 1 et 5.",
         1,
