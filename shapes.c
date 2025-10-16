@@ -64,6 +64,9 @@ void free_shape_in_table(shape_struct_t *shape) {
     case SHAPE_POLYLINE:
         free_elements_in_liste(shape->union_shape.polyline);
     break;
+    case SHAPE_POLYGONE:
+        free_elements_in_liste(shape->union_shape.polygone);
+    break;
     default :
         printf("Une erreur est survenue");
         break;
@@ -214,6 +217,41 @@ liste_t *create_polyline() {
     } while (choice_user == 1);
 
     printf("Votre polyline aura %d points.\n\n", liste->length);
+
+    return liste;
+}
+
+
+liste_t *create_polygone() {
+    printf ("Veuillez préciser les informations concernant votre polygone.\n"
+    "(coordos x des points / coordos y des points)\n\n");
+
+    liste_t *liste = malloc(sizeof(liste_t));
+    liste->length = 0;
+    liste->start = NULL;
+
+    int choice_user = 1;
+
+    do {
+        list_element_t *liste_element = malloc(sizeof(list_element_t));
+
+        push_in_list(
+            liste,
+            liste_element,
+            ask_for_unsigned_int("coordo x: ", "Merci d'entrer un nombre entier."), 
+            // probleme de buffering du stdout probable (affichage y avant x)
+            ask_for_unsigned_int("coordo y: ", "Merci d'entrer un nombre entier.")
+        );
+
+        choice_user = ask_for_int_in_range(
+            "Voulez-vous ajouter un point à votre polygone ? (1: oui / 2: non)\n",
+            "Merci d'entrer 1 ou 2.",
+            1,
+            2
+        );
+    } while (choice_user == 1);
+
+    printf("Votre polygone aura %d points.\n\n", liste->length);
 
     return liste;
 }

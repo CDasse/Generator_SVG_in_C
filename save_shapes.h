@@ -19,4 +19,7 @@ void save_line(shape_struct_t *shape, FILE *file);
 void save_polyline(shape_struct_t *shape, FILE *file);
 
 
+void save_polygone(shape_struct_t *shape, FILE *file);
+
+
 #endif

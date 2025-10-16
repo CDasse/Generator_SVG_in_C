@@ -37,6 +37,9 @@ void choice_shape_for_edition(array_t *array, viewbox_t *viewbox) {
             case SHAPE_POLYLINE:
                 edition_polyline_in_table(array->table[choice_user_edition]);
             break;
+            case SHAPE_POLYGONE:
+                edition_polygone_in_table(array->table[choice_user_edition]);
+            break;
             default:
                 printf("Forme inconnue.\n");
             break;
@@ -116,6 +119,30 @@ void edition_polyline_in_table(shape_struct_t *shape) {
 
 
 list_element_t *get_position_in_polyline(liste_t *liste) {
+    int position_user_choice = ask_for_int_in_liste("Quel point souhaitez vous modifier ?\n",
+        "Merci d'entrer un index correct.",
+        liste
+    );
+
+    list_element_t *element = liste->start;
+
+    for (int i = 0; i < position_user_choice - 1; i++) {
+        element = element->next;
+    }
+
+    return element;
+}
+
+
+void edition_polygone_in_table(shape_struct_t *shape) {
+    list_element_t *element = get_position_in_polygone(shape->union_shape.polygone);
+
+    element->value1 = ask_for_unsigned_int("coordo x: ", "Merci d'entrer un nombre entier.");
+    element->value2 = ask_for_unsigned_int("coordo y: ", "Merci d'entrer un nombre entier.");
+}
+
+
+list_element_t *get_position_in_polygone(liste_t *liste) {
     int position_user_choice = ask_for_int_in_liste("Quel point souhaitez vous modifier ?\n",
         "Merci d'entrer un index correct.",
         liste

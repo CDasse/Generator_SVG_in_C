@@ -21,4 +21,9 @@ void edition_polyline_in_table(shape_struct_t *shape);
 list_element_t *get_position_in_polyline(liste_t *liste);
 
 
+void edition_polygone_in_table(shape_struct_t *shape);
+
+list_element_t *get_position_in_polygone(liste_t *liste);
+
+
 #endif

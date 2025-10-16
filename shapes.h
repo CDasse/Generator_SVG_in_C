@@ -54,7 +54,8 @@ typedef enum user_shape_choice_e {
     CHOICE_ELLIPSE = 1,
     CHOICE_RECTANGLE = 2,
     CHOICE_LINE = 3,
-    CHOICE_POLYLINE = 4
+    CHOICE_POLYLINE = 4,
+    CHOICE_POLYGONE = 5
 } user_shape_choice_t;
 
 
@@ -63,6 +64,7 @@ typedef union shape_type_u {
     rect_t *rectangle;
     line_t *line;
     liste_t *polyline;
+    liste_t *polygone;
 } shape_type_t;
 
 
@@ -70,7 +72,8 @@ typedef enum shape_type_enum_e {
     SHAPE_ELLIPSE,
     SHAPE_RECTANGLE,
     SHAPE_LINE,
-    SHAPE_POLYLINE
+    SHAPE_POLYLINE,
+    SHAPE_POLYGONE
 } shape_type_enum_t;
 
 
@@ -130,6 +133,8 @@ void free_all(array_t *array, viewbox_t *viewbox);
 
 
 liste_t *create_polyline();
+
+liste_t *create_polygone();
 
 void push_in_list(liste_t *list, list_element_t *liste_element, int x, int y);
 

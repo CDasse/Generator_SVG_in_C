@@ -32,7 +32,9 @@ void save_projet(array_t *array, viewbox_t *viewbox) {
             case SHAPE_POLYLINE:
                 save_polyline(array->table[i], saved_file);
             break;
-            
+            case SHAPE_POLYGONE:
+                save_polygone(array->table[i], saved_file);
+            break;
             default:
                 printf("Une erreur est survenue.\n");
             break;
@@ -78,11 +80,26 @@ void save_line(shape_struct_t *shape, FILE *file) {
 }
 
 
-void save_polyline(shape_struct_t *shape, FILE *file){
+void save_polyline(shape_struct_t *shape, FILE *file) {
     liste_t *polyline = shape->union_shape.polyline;
     list_element_t *element = polyline->start;
 
     fprintf(file,"<polyline fill='none' stroke='black' points='");
+
+    while (element != NULL) {
+        fprintf(file,"%d,%d ", element->value1, element->value2);
+        element = element->next;
+    }
+
+    fprintf(file,"'/>");
+}
+
+
+void save_polygone(shape_struct_t *shape, FILE *file) {
+    liste_t *polygone = shape->union_shape.polygone;
+    list_element_t *element = polygone->start;
+
+    fprintf(file,"<polygon fill='#ffff0080' stroke='black' points='");
 
     while (element != NULL) {
         fprintf(file,"%d,%d ", element->value1, element->value2);
