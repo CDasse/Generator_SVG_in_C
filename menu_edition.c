@@ -3,7 +3,6 @@
 #include "shapes.h"
 #include "cli.h"
 #include "menu.h"
-#include "show_shapes.h"
 #include "menu_edition.h"
 #include "edition_ellipse.h"
 #include "edition_rectangle.h"
@@ -11,6 +10,7 @@
 #include "edition_polyline.h"
 #include "edition_polygone.h"
 #include "edition_path.h"
+#include "show_shapes.h"
 
 
 void choice_shape_for_edition(array_t *array, viewbox_t *viewbox) {

@@ -18,7 +18,55 @@ void edition_path_in_table(shape_struct_t *shape) {
 
     choice_edition_path(shape, choice_edition_user);
 
-    printf("\nLes modifications ont ete enregistrees.\n\n");
+    path_element_t *element = shape->union_shape.path->start;
+
+    printf("\nVotre nouveau \033[33mchemin\033[0m aura pour commandes:");
+
+    while (element != NULL) {
+        printf(" (\033[33m%c\033[0m", element->command);
+
+        switch (element->command) {
+            case 'M':
+            case 'L':
+                printf(" %d,%d", element->x, element->y);
+            break;
+            case 'H':
+                printf(" %d", element->x);
+            break;
+            case 'V':
+                printf(" %d", element->y);
+            break;
+            case 'Q':
+                printf(" %d,%d %d,%d",
+                    element->x, element->y,
+                    element->x1, element->y1);
+            break;
+            case 'C':
+                printf(" %d,%d %d,%d %d,%d",
+                    element->x, element->y,
+                    element->x1, element->y1,
+                    element->x2, element->y2);
+            break;
+            default:
+            break;
+        }
+        printf(")");
+        element = element->next;
+    }
+
+    printf(", couleur de trait: \033[33mrgba(%d,%d,%d,0.%d)\033[0m,"
+           " couleur de fond: \033[33mrgba(%d,%d,%d,0.%d)\033[0m,"
+           " et angle: \033[33m%d°\033[0m\n\n",
+        shape->union_shape.path->color.stroke.r,
+        shape->union_shape.path->color.stroke.g,
+        shape->union_shape.path->color.stroke.b,
+        shape->union_shape.path->color.stroke.a,
+        shape->union_shape.path->color.fill.r,
+        shape->union_shape.path->color.fill.g,
+        shape->union_shape.path->color.fill.b,
+        shape->union_shape.path->color.fill.a,
+        shape->union_shape.path->angle
+    );
 }
 
 

@@ -102,10 +102,61 @@ path_t *create_path() {
     path->angle = ask_for_int("- Angle de rotation: ",
         "\033[31mMerci d'entrer un nombre entier.\033[0m");
 
-
-    printf("\nVotre path contient \033[33m%d\033[0m commandes.\n\n", path->length);
+    show_created_path(path);
 
     return path;
+}
+
+
+void show_created_path(path_t *path) {
+    path_element_t *element = path->start;
+    printf("\nVotre \033[33mchemin\033[0m aura pour commandes:");
+
+    while (element != NULL) {
+        printf(" (\033[33m%c\033[0m", element->command);
+
+        switch (element->command) {
+            case 'M':
+            case 'L':
+                printf(" %d,%d", element->x, element->y);
+            break;
+            case 'H':
+                printf(" %d", element->x);
+            break;
+            case 'V':
+                printf(" %d", element->y);
+            break;
+            case 'Q':
+                printf(" %d,%d %d,%d",
+                    element->x, element->y,
+                    element->x1, element->y1);
+            break;
+            case 'C':
+                printf(" %d,%d %d,%d %d,%d",
+                    element->x, element->y,
+                    element->x1, element->y1,
+                    element->x2, element->y2);
+            break;
+            default:
+            break;
+        }
+        printf(")");
+        element = element->next;
+    }
+
+    printf(", couleur de trait: \033[33mrgba(%d,%d,%d,0.%d)\033[0m,"
+           " couleur de fond: \033[33mrgba(%d,%d,%d,0.%d)\033[0m,"
+           " et angle: \033[33m%d°\033[0m\n\n",
+        path->color.stroke.r,
+        path->color.stroke.g,
+        path->color.stroke.b,
+        path->color.stroke.a,
+        path->color.fill.r,
+        path->color.fill.g,
+        path->color.fill.b,
+        path->color.fill.a,
+        path->angle
+    );
 }
 
 

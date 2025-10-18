@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "shapes.h"
+#include "free_malloc.h"
 
 
 void free_viewbox(viewbox_t *viewbox) {

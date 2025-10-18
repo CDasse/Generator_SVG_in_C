@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "shapes.h"
-#include "menu.h"
 #include "cli.h"
+#include "menu.h"
 #include "menu_creation.h"
 #include "menu_edition.h"
 #include "menu_remove.h"

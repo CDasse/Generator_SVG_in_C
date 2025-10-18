@@ -10,6 +10,9 @@ void path_for_creation(array_t *array);
 path_t *create_path();
 
 
+void show_created_path(path_t *path);
+
+
 void initialization_points_path (path_element_t *element);
 
 

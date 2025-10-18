@@ -24,15 +24,11 @@ int main(void) {
 }
 
 
-// affichage des infos du path apres creation et apres edition
-
-// lors erreur saisi lettre path, double message erreur
-
 // supprimer point dans poly ou path ?
 
 // ajouter fonctionnalite inversion axe x / y
 
-// verifier les include des fichiers
+// mettre les fichiers dans des sous-dossiers
 
 // tester le code a fond !!!!!
 

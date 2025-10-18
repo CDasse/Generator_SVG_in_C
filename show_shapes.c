@@ -141,8 +141,7 @@ void show_line_in_table(int i, shape_struct_t *shape) {
 void show_polyline_in_table(int i, shape_struct_t *shape) {
     printf("[%d] \033[35m%s\033[0m / points :", i, get_shape_type(shape->enum_shape));
 
-    liste_t *polyline = shape->union_shape.polyline;
-    list_element_t *element = polyline->start;
+    list_element_t *element = shape->union_shape.polyline->start;
 
     while (element != NULL) {
         printf(" (\033[35m%d\033[0m/\033[35m%d\033[0m) ",
@@ -154,11 +153,11 @@ void show_polyline_in_table(int i, shape_struct_t *shape) {
 
     printf(", couleur de trait: \033[35mrgba(%d,%d,%d,0.%d)\033[0m, "
         "angle: \033[35m%d°\033[0m\n",
-        polyline->color.stroke.r,
-        polyline->color.stroke.g,
-        polyline->color.stroke.b,
-        polyline->color.stroke.a,
-        polyline->angle
+        shape->union_shape.polyline->color.stroke.r,
+        shape->union_shape.polyline->color.stroke.g,
+        shape->union_shape.polyline->color.stroke.b,
+        shape->union_shape.polyline->color.stroke.a,
+        shape->union_shape.polyline->angle
     );
 }
 
@@ -166,8 +165,7 @@ void show_polyline_in_table(int i, shape_struct_t *shape) {
 void show_polygone_in_table(int i, shape_struct_t *shape) {
     printf("[%d] \033[34m%s\033[0m / points :", i, get_shape_type(shape->enum_shape));
 
-    liste_t *polygone = shape->union_shape.polygone;
-    list_element_t *element = polygone->start;
+    list_element_t *element = shape->union_shape.polygone->start;
 
     while (element != NULL) {
         printf(" (\033[34m%d\033[0m/\033[34m%d\033[0m) ",
@@ -179,15 +177,15 @@ void show_polygone_in_table(int i, shape_struct_t *shape) {
     printf(", couleur de trait: \033[34mrgba(%d,%d,%d,0.%d)\033[0m,"
         " couleur de fond: \033[34mrgba(%d,%d,%d,0.%d)\033[0m, angle: "
         "\033[34m%d°\033[0m\n",
-        polygone->color.stroke.r,
-        polygone->color.stroke.g,
-        polygone->color.stroke.b,
-        polygone->color.stroke.a,
-        polygone->color.fill.r,
-        polygone->color.fill.g,
-        polygone->color.fill.b,
-        polygone->color.fill.a,
-        polygone->angle
+        shape->union_shape.polygone->color.stroke.r,
+        shape->union_shape.polygone->color.stroke.g,
+        shape->union_shape.polygone->color.stroke.b,
+        shape->union_shape.polygone->color.stroke.a,
+        shape->union_shape.polygone->color.fill.r,
+        shape->union_shape.polygone->color.fill.g,
+        shape->union_shape.polygone->color.fill.b,
+        shape->union_shape.polygone->color.fill.a,
+        shape->union_shape.polygone->angle
     );
 }
 
@@ -195,8 +193,7 @@ void show_polygone_in_table(int i, shape_struct_t *shape) {
 void show_path_in_table(int i, shape_struct_t *shape) {
     printf("[%d] \033[33m%s\033[0m / commandes :", i, get_shape_type(shape->enum_shape));
 
-    path_t *path = shape->union_shape.path;
-    path_element_t *element = path->start;
+    path_element_t *element = shape->union_shape.path->start;
 
     while (element != NULL) {
         printf(" (\033[33m%c\033[0m", element->command);
@@ -233,14 +230,14 @@ void show_path_in_table(int i, shape_struct_t *shape) {
     printf(", couleur de trait: \033[33mrgba(%d,%d,%d,0.%d)\033[0m,"
            " couleur de fond: \033[33mrgba(%d,%d,%d,0.%d)\033[0m,"
            " angle: \033[33m%d°\033[0m\n",
-        path->color.stroke.r,
-        path->color.stroke.g,
-        path->color.stroke.b,
-        path->color.stroke.a,
-        path->color.fill.r,
-        path->color.fill.g,
-        path->color.fill.b,
-        path->color.fill.a,
-        path->angle
+        shape->union_shape.path->color.stroke.r,
+        shape->union_shape.path->color.stroke.g,
+        shape->union_shape.path->color.stroke.b,
+        shape->union_shape.path->color.stroke.a,
+        shape->union_shape.path->color.fill.r,
+        shape->union_shape.path->color.fill.g,
+        shape->union_shape.path->color.fill.b,
+        shape->union_shape.path->color.fill.a,
+        shape->union_shape.path->angle
     );
 }

@@ -1,10 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "menu.h"
+#include "menu_remove.h"
 #include "shapes.h"
 #include "cli.h"
 #include "show_shapes.h"
-#include "menu_remove.h"
 #include "free_malloc.h"
 
 
