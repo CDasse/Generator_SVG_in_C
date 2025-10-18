@@ -25,6 +25,9 @@ int ask_for_int_in_table(char *message, char *error_message, array_t *array);
 int ask_for_int_in_liste(char *message, char *error_message, liste_t *liste);
 
 
+int ask_for_int_in_path(char *message, char *error_message, path_t *path);
+
+
 int ask_color (char *message, char *error_message);
 
 

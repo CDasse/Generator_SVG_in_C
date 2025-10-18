@@ -2,13 +2,15 @@
 #include <stdlib.h>
 #include "shapes.h"
 #include "menu.h"
+#include "free_malloc.h"
 
 
 int main(void) {
 
     system("clear");
     
-    printf("\n\e[1m\033[34mBienvenue dans cette super application de création de SVG !!\033[0m\e[0m\n\n");
+    printf("\e[1m\033[34mBienvenue dans cette super application "
+        "de creation de SVG !!\033[0m\e[0m\n\n");
 
     viewbox_t *svg_viewbox = create_viewbox();
     
@@ -22,9 +24,15 @@ int main(void) {
 }
 
 
-// ajouter forme path
+// affichage des infos du path apres creation et apres edition
+
+// lors erreur saisi lettre path, double message erreur
+
+// supprimer point dans poly ou path ?
 
 // ajouter fonctionnalite inversion axe x / y
+
+// verifier les include des fichiers
 
 // tester le code a fond !!!!!
 
@@ -32,4 +40,4 @@ int main(void) {
 
 // faire javadoc !!!!!
 
-// préparer l'oral
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! preparer l'oral  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!

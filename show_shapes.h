@@ -25,4 +25,7 @@ void show_polyline_in_table(int i, shape_struct_t *shape);
 void show_polygone_in_table(int i, shape_struct_t *shape);
 
 
+void show_path_in_table(int i, shape_struct_t *shape);
+
+
 #endif

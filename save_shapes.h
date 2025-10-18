@@ -4,9 +4,6 @@
 #include "shapes.h"
 
 
-void save_projet(array_t *array, viewbox_t *viewbox);
-
-
 void save_ellipse(shape_struct_t *shape, FILE *file);
 
 
@@ -20,6 +17,9 @@ void save_polyline(shape_struct_t *shape, FILE *file);
 
 
 void save_polygone(shape_struct_t *shape, FILE *file);
+
+
+void save_path(shape_struct_t *shape, FILE *file);
 
 
 #endif

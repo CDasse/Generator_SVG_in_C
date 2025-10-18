@@ -1,5 +1,6 @@
 #ifndef DEF_SHAPES
 #define DEF_SHAPES
+
 #include <stdbool.h>
 
 typedef struct node_stack_s node_stack_t;
@@ -13,6 +14,10 @@ typedef struct stroke_s stroke_t;
 typedef struct fill_s fill_t;
 
 typedef struct color_s color_t;
+
+typedef struct path_element_s path_element_t;
+
+typedef struct path_s path_t;
 
 
 typedef struct viewbox_s {
@@ -89,7 +94,8 @@ typedef enum user_shape_choice_e {
     CHOICE_RECTANGLE = 2,
     CHOICE_LINE = 3,
     CHOICE_POLYLINE = 4,
-    CHOICE_POLYGONE = 5
+    CHOICE_POLYGONE = 5,
+    CHOICE_PATH = 6
 } user_shape_choice_t;
 
 
@@ -99,6 +105,7 @@ typedef union shape_type_u {
     line_t *line;
     liste_t *polyline;
     liste_t *polygone;
+    path_t *path;
 } shape_type_t;
 
 
@@ -107,7 +114,8 @@ typedef enum shape_type_enum_e {
     SHAPE_RECTANGLE,
     SHAPE_LINE,
     SHAPE_POLYLINE,
-    SHAPE_POLYGONE
+    SHAPE_POLYGONE,
+    SHAPE_PATH
 } shape_type_enum_t;
 
 
@@ -138,49 +146,33 @@ typedef struct liste_s {
 } liste_t;
 
 
-viewbox_t *create_viewbox();
+typedef struct path_element_s {
+    char command;
+    int x;
+    int y;
+    int x1;
+    int y1;
+    int x2;
+    int y2;
+    struct path_element_s *next;
+} path_element_t;
 
-void free_viewbox(viewbox_t *viewbox);
+
+typedef struct path_s {
+    int length;
+    color_t color;
+    int angle;
+    path_element_t *start;
+} path_t;
+
+
+viewbox_t *create_viewbox();
 
 
 array_t *create_array();
 
+
 void initialize_array(array_t *array);
-
-void free_shape_in_table(shape_struct_t *shape);
-
-int ask_for_confirmation();
-
-
-ellipse_t *create_ellipse();
-
-void free_ellipse(ellipse_t *ellipse);
-
-
-rect_t *create_rect();
-
-void free_rect(rect_t *rect);
-
-
-line_t *create_line();
-
-void free_line(line_t *line);
-
-
-void free_all(array_t *array, viewbox_t *viewbox);
-
-
-liste_t *create_polyline();
-
-liste_t *create_polygone();
-
-void push_in_list(liste_t *list, list_element_t *liste_element, int x, int y);
-
-void free_liste(liste_t *liste);
-
-void free_element(list_element_t *element);
-
-void free_elements_in_liste(liste_t *liste);
 
 
 #endif
