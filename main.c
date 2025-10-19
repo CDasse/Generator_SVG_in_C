@@ -24,13 +24,13 @@ int main(void) {
 }
 
 
+// probleme de buffer (lorsque l'on quitte l'appli)
+
 // supprimer point dans poly ou path ?
 
 // ajouter fonctionnalite inversion axe x / y
 
 // mettre les fichiers dans des sous-dossiers
-
-// tester le code a fond !!!!!
 
 // Faire readme !!!!!
 

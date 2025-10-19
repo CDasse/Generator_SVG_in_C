@@ -10,7 +10,7 @@ void choice_shape_for_remove(array_t *array, viewbox_t *viewbox);
 void remove_shape(array_t *array, viewbox_t *viewbox, int choice_user_remove);
 
 
-int ask_for_confirmation();
+int ask_for_confirmation_remove();
 
 
 #endif

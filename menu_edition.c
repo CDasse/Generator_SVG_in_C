@@ -45,6 +45,12 @@ void edition_shape_in_table(array_t *array, viewbox_t *viewbox, int choice_user_
         menu_for_user(array, viewbox);
         return;
     }
+
+    int choice_user = ask_for_confirmation_edition();
+
+    if (choice_user == 2) {
+        menu_for_user(array, viewbox);
+    }
     
     switch (array->table[choice_user_edition]->enum_shape) {
          case SHAPE_ELLIPSE:
@@ -69,4 +75,16 @@ void edition_shape_in_table(array_t *array, viewbox_t *viewbox, int choice_user_
             printf("\033[31mForme inconnue.\033[0m\n");
         break;
         }
+}
+
+
+int ask_for_confirmation_edition() {
+    int choice_user = ask_for_int_in_range ("Etes-vous sur de vouloir "
+        "modifier cette forme ?\n(1: \033[32mOUI\033[0m / 2: \033[31mNON\033[0m)\n",
+        "\033[31mMerci d'entrer 1 ou 2.\033[0m\n",
+    1,
+    2
+    );
+
+    return choice_user;
 }

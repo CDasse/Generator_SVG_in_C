@@ -7,7 +7,7 @@
 viewbox_t *create_viewbox() {
     printf("Pour commencer, veuillez preciser la dimension "
         "de votre \033[32mfenetre de visualisation\033[0m.\n"
-        "(la largeur puis la hauteur)\n\n");
+        "(la largeur puis la hauteur en pixels)\n\n");
 
     viewbox_t *viewbox = malloc(sizeof(viewbox_t));
 

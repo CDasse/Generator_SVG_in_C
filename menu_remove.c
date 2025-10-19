@@ -45,7 +45,7 @@ void remove_shape(array_t *array, viewbox_t *viewbox, int choice_user_remove) {
         return;
     }
 
-    int choice_user = ask_for_confirmation();
+    int choice_user = ask_for_confirmation_remove();
 
     if (choice_user == 1) {
         free_shape_in_table(array->table[choice_user_remove]);
@@ -59,7 +59,7 @@ void remove_shape(array_t *array, viewbox_t *viewbox, int choice_user_remove) {
 }
 
 
-int ask_for_confirmation() {
+int ask_for_confirmation_remove() {
     int choice_user = ask_for_int_in_range ("Etes-vous sur de vouloir "
         "supprimer cette forme ?\n(1: \033[32mOUI\033[0m / 2: \033[31mNON\033[0m)\n",
         "\033[31mMerci d'entrer 1 ou 2.\033[0m\n",

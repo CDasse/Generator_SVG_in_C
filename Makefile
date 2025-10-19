@@ -1,5 +1,5 @@
 CC = gcc
-FLAGS = -std=c99 -Wall -Wextra -Werror
+FLAGS = -std=c99 -Wall -Wextra -Werror -Iinclude
 
 build:
 	$(CC) $(FLAGS) -c main.c 

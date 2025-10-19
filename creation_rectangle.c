@@ -21,7 +21,7 @@ rect_t *create_rect() {
 
     printf ("Veuillez preciser les informations concernant votre "
         "\033[32mrectangle\033[0m.\n"
-        " (coordo x du premier point / coordo y du premier point"
+        "(coordo x du premier point / coordo y du premier point"
         " / largeur / hauteur / couleurs en rgba / angle de rotation)\n\n");
     
     rect_t *rect = malloc(sizeof(rect_t));
