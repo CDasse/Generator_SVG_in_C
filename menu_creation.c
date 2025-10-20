@@ -14,6 +14,13 @@
 void choice_shape_for_creation(array_t *array, viewbox_t *viewbox) {
     system("clear");
 
+    if (array->index >= 40) {
+        printf("\033[31mVous avez atteint ne nombre limite de forme\033[0m");
+        ask_for_1("Tapez '1' pour continuer ...",
+            "\033[31mMerci d'entrer 1 pour continuer.\033[0m");
+         menu_for_user(array, viewbox);
+    }
+
     user_shape_choice_t choice_shape = ask_for_int_in_range("Quelle "
         "\033[32mforme\033[0m voulez-vous realiser ?\n"
         "\n1: Ellipse\n"

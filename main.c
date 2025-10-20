@@ -24,8 +24,6 @@ int main(void) {
 }
 
 
-// mettre les fichiers dans des sous-dossiers (utiliser les chemins relatifs mais attention .o dans fichier principal)
-
 // Faire readme !!!!!  (https://talks.freelancerepublik.com/regles-ecrire-readme-md-github/)
 
 // faire javadoc !!!!! commenter tous les types et les fonctions (dans les .h)
