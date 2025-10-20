@@ -24,16 +24,10 @@ int main(void) {
 }
 
 
-// probleme de buffer (lorsque l'on quitte l'appli)
+// mettre les fichiers dans des sous-dossiers (utiliser les chemins relatifs mais attention .o dans fichier principal)
 
-// supprimer point dans poly ou path ?
+// Faire readme !!!!!  (https://talks.freelancerepublik.com/regles-ecrire-readme-md-github/)
 
-// ajouter fonctionnalite inversion axe x / y
-
-// mettre les fichiers dans des sous-dossiers
-
-// Faire readme !!!!!
-
-// faire javadoc !!!!!
+// faire javadoc !!!!! commenter tous les types et les fonctions (dans les .h)
 
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! preparer l'oral  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!

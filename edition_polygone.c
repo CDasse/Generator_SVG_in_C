@@ -45,7 +45,7 @@ void edition_polygone_in_table(shape_struct_t *shape) {
 void choice_edition_polygone(shape_struct_t *shape, int choice_edition_user) {
     switch (choice_edition_user) {
         case 1 :
-            edition_coordo_polygone(shape);
+            edition_or_remove_coordo_polygone(shape);
         break;
         case 2 :
             edition_color_polygone(shape);
@@ -63,6 +63,26 @@ void choice_edition_polygone(shape_struct_t *shape, int choice_edition_user) {
 }
 
 
+void edition_or_remove_coordo_polygone(shape_struct_t *shape) {
+    int choice_edition_user = ask_for_int_in_range("\nQue souhaitez-vous faire ? "
+        "\n1: Modifier des coordonnees\n"
+        "2: Supprimer des coordonnees\n",
+        "\033[31mMerci d'entrer 1 ou 2.\033[0m\n",
+        1,
+        2
+    );
+
+    switch (choice_edition_user) {
+        case 1 :
+            edition_coordo_polygone(shape);
+        break;
+        case 2 :
+            remove_coordo_polygone(shape);
+        break;
+    }
+}
+
+
 void edition_coordo_polygone(shape_struct_t *shape) {
     list_element_t *element = get_position_in_liste(shape->union_shape.polygone);
 
@@ -70,6 +90,38 @@ void edition_coordo_polygone(shape_struct_t *shape) {
         "un nombre entier.\033[0m");
     element->value2 = ask_for_unsigned_int("- Coordo y: ", "\033[31mMerci d'entrer "
         "un nombre entier.\033[0m");
+}
+
+
+void remove_coordo_polygone(shape_struct_t *shape) {
+    liste_t *polygone = shape->union_shape.polygone;
+
+    int position_user_choice = ask_for_int_in_liste(
+        "\nQuel point souhaitez-vous supprimer ?\n",
+        "\033[31mMerci d'entrer un index correct.\033[0m",
+        polygone
+    );
+
+    if (position_user_choice == 1) {
+        list_element_t *tmp = polygone->start;
+        polygone->start = tmp->next;
+        free(tmp);
+        polygone->length--;
+        printf("Point numéro \033[34m%d\033[0m supprimé.\n", position_user_choice);
+        return;
+    }
+
+    list_element_t *prev = polygone->start;
+    for (int i = 1; i < position_user_choice - 1; i++) {
+        prev = prev->next;
+    }
+
+    list_element_t *to_delete = prev->next;
+    prev->next = to_delete->next;
+    free(to_delete);
+    polygone->length--;
+
+    printf("Point numéro \033[34m%d\033[0m supprimé.\n", position_user_choice);
 }
 
 
