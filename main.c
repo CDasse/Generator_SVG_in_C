@@ -24,7 +24,7 @@ int main(void) {
 }
 
 
-// Faire readme !!!!!  (https://talks.freelancerepublik.com/regles-ecrire-readme-md-github/)
+// ATTENTION erreur de tableau dans le readme
 
 // faire javadoc !!!!! commenter tous les types et les fonctions (dans les .h)
 

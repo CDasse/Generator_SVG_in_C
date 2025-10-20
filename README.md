@@ -86,15 +86,13 @@ Vous avez le choix entre les formes suivantes : Ellipse / Rectangle / Ligne / Po
 
 **Chemin (Path)**
 * Commandes SVG et coordonnées associées ;
-| Commande      | Description                             |
-| :-----------: |-----------------------------------------|
-|  M            | Déplacement                             |
-|  L            | Ligne                                   |
-|  H            | Ligne horizontale                       |
-|  V            | Ligne verticale                         |
-|  C            | Courbe avec deux points de contrôle     |
-|  Q            | Courbe avec un point de contrôle        |
-|  Z            | Fermeture du chemin                     |
+    * M -> Déplacement
+    * L -> Ligne
+    * H -> Ligne horizontale
+    * V -> Ligne verticale
+    * C -> Courbe avec deux points de contrôle
+    * Q -> Courbe avec un point de contrôle
+    * Z -> Fermeture du chemin
 * Couleur du trait (en rgba) ;
 * Couleur de fond (en rgba) ;
 * Angle de rotation (en degrés).

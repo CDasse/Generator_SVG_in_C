@@ -3,17 +3,16 @@
 
 #include <stdbool.h>
 
-typedef struct node_stack_s node_stack_t;
-
-typedef struct list_element_s list_element_t;
-
-typedef struct liste_s liste_t;
 
 typedef struct stroke_s stroke_t;
 
 typedef struct fill_s fill_t;
 
 typedef struct color_s color_t;
+
+typedef struct list_element_s list_element_t;
+
+typedef struct liste_s liste_t;
 
 typedef struct path_element_s path_element_t;
 
@@ -126,7 +125,7 @@ typedef struct shape_struct_s {
 
 
 typedef struct array_s {
-    shape_struct_t* table[40];
+    shape_struct_t *table[40];
     int index;
 } array_t;
 

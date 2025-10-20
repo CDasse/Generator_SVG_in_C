@@ -19,6 +19,7 @@ void save_projet(array_t *array, viewbox_t *viewbox) {
     save_shapes_in_projet(array, saved_file);
     
     fprintf(saved_file, "%s", end_viewbox);
+    
     fclose(saved_file);
 
     printf("Vous pouvez maintenant ouvrir votre sauvegarde "

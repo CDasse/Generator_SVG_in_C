@@ -212,13 +212,15 @@ void show_path_in_table(int i, shape_struct_t *shape) {
             case 'Q':
                 printf(" %d,%d %d,%d",
                     element->x, element->y,
-                    element->x1, element->y1);
+                    element->x1, element->y1
+                );
             break;
             case 'C':
                 printf(" %d,%d %d,%d %d,%d",
                     element->x, element->y,
                     element->x1, element->y1,
-                    element->x2, element->y2);
+                    element->x2, element->y2
+                );
             break;
             default:
             break;

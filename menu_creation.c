@@ -15,7 +15,7 @@ void choice_shape_for_creation(array_t *array, viewbox_t *viewbox) {
     system("clear");
 
     if (array->index >= 40) {
-        printf("\033[31mVous avez atteint ne nombre limite de forme\033[0m");
+        printf("\033[31mVous avez atteint le nombre limite de formes.\033[0m");
         ask_for_1("Tapez '1' pour continuer ...",
             "\033[31mMerci d'entrer 1 pour continuer.\033[0m");
          menu_for_user(array, viewbox);
