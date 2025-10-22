@@ -173,7 +173,7 @@ Pensez à le renommer ou à créer une sauvegarde.**
 make clean
 ```
 
-* Les fichiers objets sont supprimer lors du lancement de la commande : ```make build```
+* Les fichiers objets sont supprimés lors du lancement de la commande : ```make build```
 
 * Des erreurs de **buffer** peuvent apparaître pendant l’exécution.
 

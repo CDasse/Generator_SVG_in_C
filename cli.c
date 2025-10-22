@@ -5,6 +5,7 @@
 #include "cli.h"
 
 
+
 void clear_buffer() {
     int c = 0;
     while (c != '\n' && c != EOF)
